@@ -1,2 +1,3 @@
 rootProject.name='Amigo'
 include ':app'
+include ':logic'
