@@ -6,7 +6,7 @@ public class Profile {
     private String name;
     private int yearOfStudy;
     private String programOfStudy;
-//    private ArrayList<Course> courses;
+    private ArrayList<Course> courses;
     private String contactInfo;
 
     public Profile(String name, int yearofstudy, String programofstudy, ArrayList<Course> courses,
