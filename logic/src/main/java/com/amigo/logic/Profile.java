@@ -9,13 +9,13 @@ public class Profile {
     private HashSet<Course> courses;
     private String contactInfo;
 
-    public Profile(String name, int yearofstudy, String programofstudy, HashSet<Course> courses,
-                   String contactinfo) {
+    public Profile(String name, int yearOfStudy, String programOfStudy, HashSet<Course> courses,
+                   String contactInfo) {
         this.name = name;
-        this.yearOfStudy = yearofstudy;
-        this.programOfStudy = programofstudy;
+        this.yearOfStudy = yearOfStudy;
+        this.programOfStudy = programOfStudy;
         this.courses = courses;
-        this.contactInfo = contactinfo;
+        this.contactInfo = contactInfo;
     }
 
     public String getName() {
