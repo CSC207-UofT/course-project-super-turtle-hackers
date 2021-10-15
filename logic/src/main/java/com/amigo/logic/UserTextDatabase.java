@@ -1,13 +1,17 @@
 package com.amigo.logic;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
-public class UserInputReader implements UserDatabase {
+public class UserTextDatabase implements UserDatabase {
 
     private static class InputFormatException extends RuntimeException {
 
@@ -20,7 +24,7 @@ public class UserInputReader implements UserDatabase {
 
     private File sourceFile;
 
-    public UserInputReader() {
+    public UserTextDatabase() {
         sourceFile = new File(SOURCE);
     }
 
@@ -30,6 +34,7 @@ public class UserInputReader implements UserDatabase {
      * @return a list of constructed Users
      * @throws FileNotFoundException
      */
+    @Override
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
         // try with resources
@@ -43,6 +48,30 @@ public class UserInputReader implements UserDatabase {
         }
         return users;
     }
+
+    @Override
+    public boolean addUser(User user) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(sourceFile, true))) {
+            Profile p = user.getProfile();
+            writer.append(p.getName()).append('\n');
+            writer.append(Integer.toString(p.getYearOfStudy())).append('\n');
+            writer.append(p.getProgramOfStudy()).append('\n');
+
+            String courses = p
+                    .getCourses()
+                    .stream()
+                    .map(Course::getCourseCode)
+                    .collect(Collectors.joining(", "));
+            writer.append(p.getContactInfo()).append('\n');
+            writer.append("----");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return true;
+    }
+
 
     private User readNextUser(Scanner fromFile, List<User> users) {
         String name = fromFile.nextLine();
