@@ -1,0 +1,11 @@
+Akshat Naik
+2
+Computer Science
+CSC207, MAT237
+akshat@mail.utoronto.ca
+----
+Jane Doe
+3
+Mechanical Engineering
+ES2089
+jane.doe@mail.utoronto.ca
