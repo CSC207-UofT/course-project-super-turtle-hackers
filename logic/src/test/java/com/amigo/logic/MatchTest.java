@@ -32,8 +32,8 @@ public class MatchTest {
         User user1 = new User(profile1, "dien001");
         User user2 = new User(profile2, "aksh002");
         Match match1 = new Match(user1, user2, LocalDateTime.now());
-        HashSet<Course> user1courses = new HashSet<>(user1.getProfile().getCourses());
-        HashSet<Course> user2courses = new HashSet<>(user2.getProfile().getCourses());
+        HashSet<Course> user1courses = new HashSet<>(match1.getUser1().getProfile().getCourses());
+        HashSet<Course> user2courses = new HashSet<>(match1.getUser2().getProfile().getCourses());
         user1courses.retainAll(user2courses);
         assertEquals(user1courses.size(),1);
     }
