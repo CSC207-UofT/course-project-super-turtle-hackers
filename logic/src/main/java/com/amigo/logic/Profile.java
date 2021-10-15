@@ -1,15 +1,16 @@
 package com.amigo.logic;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Profile {
     private String name;
     private int yearOfStudy;
     private String programOfStudy;
-    private ArrayList<Course> courses;
+    private HashSet<Course> courses;
     private String contactInfo;
 
-    public Profile(String name, int yearofstudy, String programofstudy, ArrayList<Course> courses,
+    public Profile(String name, int yearofstudy, String programofstudy, HashSet<Course> courses,
                    String contactinfo) {
         this.name = name;
         this.yearOfStudy = yearofstudy;
@@ -42,11 +43,11 @@ public class Profile {
         this.programOfStudy = programOfStudy;
     }
 
-    public ArrayList<Course> getCourses() {
+    public HashSet<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
+    public void setCourses(HashSet<Course> courses) {
         this.courses = courses;
     }
 

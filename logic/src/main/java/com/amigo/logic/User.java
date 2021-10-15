@@ -9,4 +9,12 @@ public class User {
         this.profile = profile;
         this.id = id;
     }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public String getId() {
+        return id;
+    }
 }
