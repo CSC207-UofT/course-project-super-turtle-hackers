@@ -1,6 +1,5 @@
 package com.amigo.logic;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Profile {
