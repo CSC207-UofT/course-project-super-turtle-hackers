@@ -17,6 +17,10 @@ public class Course {
         return tutorial;
     }
 
+    public Course(String courseCode) {
+        this(courseCode, "", "");
+    }
+
     public Course(String courseCode, String lecture, String tutorial) {
         this.courseCode = courseCode;
         this.lecture = lecture;
