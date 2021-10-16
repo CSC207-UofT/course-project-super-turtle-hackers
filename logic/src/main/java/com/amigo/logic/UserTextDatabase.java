@@ -52,6 +52,7 @@ public class UserTextDatabase implements UserDatabase {
     public boolean addUser(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(sourceFile, true))) {
             Profile p = user.getProfile();
+            writer.append('\n');
             writer.append(user.getId()).append('\n');
             writer.append(p.getName()).append('\n');
             writer.append(Integer.toString(p.getYearOfStudy())).append('\n');

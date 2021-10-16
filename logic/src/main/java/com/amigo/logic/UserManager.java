@@ -38,13 +38,13 @@ public class UserManager {
      * @return the new user's id
      */
     public String createUser(String[] userInfo, boolean writeToDatabase) {
-        String name = userInfo[0].strip();
+        String name = userInfo[0].strip().toLowerCase();
         int year = Integer.parseInt(userInfo[1]);
         String prog = userInfo[2].strip();
         HashSet<Course> courses = createCourseSet(userInfo[3]);
         String contact = userInfo[4];
         Profile p = new Profile(name, year, prog, courses, contact);
-        String id = name.split(" ")[0] + (int) (100 * Math.random() + 1);
+        String id = name.split(" ")[0] + (int) (1000 * Math.random() + 1);
         User user = new User(p, id);
         // TODO: not yet doing any checks of duplicates
         users.put(id, user);
