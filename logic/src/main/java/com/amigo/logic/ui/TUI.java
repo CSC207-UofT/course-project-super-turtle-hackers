@@ -71,7 +71,7 @@ public class TUI {
             response = in.nextLine();
         }
 
-        in.close();
+//        in.close();
         return response;
     }
 
@@ -91,7 +91,7 @@ public class TUI {
             response = in.nextLine();
         }
 
-        in.close();
+//        in.close();
         return response;
     }
 }
