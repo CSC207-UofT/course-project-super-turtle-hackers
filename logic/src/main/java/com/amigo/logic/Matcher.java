@@ -27,6 +27,7 @@ public class Matcher {
             matches.put(user.getId(), new ArrayList<>());
         }
         int minNumberMatches = 2;
+        // A user could have less users if there are no available matches
 
         for (User user: users) {
             String userID = user.getId();
@@ -74,6 +75,7 @@ public class Matcher {
     }
 
     private HashMap<String, ArrayList<Match>> potentialMatching(ArrayList<User> users) {
+        // TODO: Add Wildcard Matches
         int numUsers = users.size();
 
         // Creates a map of potential matches
@@ -90,8 +92,11 @@ public class Matcher {
             for (int j = i + 1; j < numUsers; j++) {
                 user2 = users.get(j);
                 Match match = new Match(user1, user2, new Date(), metric(user1, user2));
-                potentialMatches.get(user1.getId()).add(match);
-                potentialMatches.get(user2.getId()).add(match);
+                // Only adds the match if the two users have common courses
+                if (match.getMetric() > 0){
+                    potentialMatches.get(user1.getId()).add(match);
+                    potentialMatches.get(user2.getId()).add(match);
+                }
             }
         }
     return potentialMatches;
@@ -99,6 +104,7 @@ public class Matcher {
 
 
     public double metric(User user1, User user2) {
+        // TODO: Improve metric to include more than just courses
         Profile profile1 = user1.getProfile();
         Profile profile2 = user2.getProfile();
 
