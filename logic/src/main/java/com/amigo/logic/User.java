@@ -17,4 +17,9 @@ public class User {
     public String getId() {
         return id;
     }
+
+    public boolean equals(User user) {
+        // If the ID of this user and the user is the same, then  return true
+        return this.getId().equals(user.getId());
+    }
 }

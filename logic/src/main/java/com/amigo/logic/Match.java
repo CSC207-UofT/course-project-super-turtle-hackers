@@ -27,7 +27,18 @@ public class Match {
         return dateOfMatch;
     }
 
-    public double getMetric() {
-        return metric;
+    public double getMetric() { return metric; }
+
+    public boolean equals(Match match) {
+        boolean dateMatched = this.getDateOfMatch().equals(match.getDateOfMatch());
+        User u1 = this.getUser1();
+        User u2 = this.getUser2();
+        User o1 = match.getUser1();
+        User o2 = match.getUser2();
+        boolean user1Matched = u1.equals(o1) || u1.equals(o2);
+        boolean user2Matched = u2.equals(o1) || u2.equals(o2);
+
+        return dateMatched && user1Matched && user2Matched;
     }
+
 }
