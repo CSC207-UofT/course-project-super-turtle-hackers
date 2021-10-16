@@ -32,7 +32,6 @@ public class UserTextDatabase implements UserDatabase {
      * Reads and constructs user objects from file.
      *
      * @return a list of constructed Users
-     * @throws FileNotFoundException
      */
     @Override
     public List<User> getUsers() {
