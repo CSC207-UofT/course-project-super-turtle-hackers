@@ -2,6 +2,9 @@ package com.amigo.logic;
 
 import com.amigo.logic.ui.TUI;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ControlSystem {
 
     private TUI ui;
@@ -38,5 +41,12 @@ public class ControlSystem {
     private void register() {
         String[] inputs = ui.runRegister();
         ui.runRegisterSuccess(manager.createUser(inputs, true));
+    }
+
+    public void doMatching() {
+        ArrayList<User> users =  new ArrayList<User>(this.manager.getUsers().values());
+        Matcher matcher = new Matcher();
+        HashMap<String, ArrayList<Match>> matchResults = matcher.matching(users);
+        this.manager.modifyCurrentMatches(matchResults);
     }
 }

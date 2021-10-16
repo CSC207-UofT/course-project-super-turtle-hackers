@@ -30,4 +30,8 @@ public class User {
         // If the ID of this user and the user is the same, then  return true
         return this.getId().equals(user.getId());
     }
+
+    public void setCurrentMatches(ArrayList<Match> currentMatches) {
+        this.currentMatches = currentMatches;
+    }
 }

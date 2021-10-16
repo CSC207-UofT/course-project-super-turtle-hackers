@@ -1,5 +1,6 @@
 package com.amigo.logic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -64,5 +65,21 @@ public class UserManager {
         }
 
         return courseSet;
+    }
+
+    /**
+     * Modifies current matches for each user in matches
+     * The currentMatches attribute for each user is first empties and then the new matches are
+     * added.
+     *
+     * @param matches
+     */
+    public void modifyCurrentMatches(HashMap<String, ArrayList<Match>> matches) {
+        // TODO: Add the previous current matches of each user to their match history
+        for (Map.Entry<String, ArrayList<Match>> entry: matches.entrySet()) {
+            User user = this.getUserById(entry.getKey());
+            ArrayList<Match> currentMatchesUser = entry.getValue();
+            user.setCurrentMatches(currentMatchesUser);
+        }
     }
 }
