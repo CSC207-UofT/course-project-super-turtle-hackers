@@ -1,23 +1,102 @@
 package com.amigo.logic;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Matcher {
     /* Pseudo code for the matching algorithm
+    * HashMap which maps each user to its potential matches
     * HashMap which maps each user to its matches
     * for each user in UserDatabase
     *   if each user >= 2 matches:
     *       skip
     *   else:
-    *       rank each user other than the user itself and the users that are already matched
-    *       with the user
+    *       ranks all of the users' potential matches using the metric each user
     *       then pick the user with the highest rank and match it with the original user
     */
+    public HashMap<String, ArrayList<Match>> matching(ArrayList<User> users) {
+        // Creates a map of potential matches
+        HashMap<String, ArrayList<Match>> potentialMatches = this.potentialMatching(users);
 
-    public Matcher(UserDatabase userdb) {
-        this.userdb = userdb;
+        // Initializes the final map of matches
+        HashMap<String, ArrayList<Match>> matches = new HashMap<>();
+        for (User user: users) {
+            matches.put(user.getId(), new ArrayList<>());
+        }
+        int minNumberMatches = 2;
+
+        for (User user: users) {
+            String userID = user.getId();
+            ArrayList<Match> matchesUser = matches.get(userID);
+            // If a user already has two matches or more, move on to next user
+            if (matchesUser.size() >= minNumberMatches) {
+                continue;
+            }
+
+            ArrayList<Match> potentialMatchesUser = potentialMatches.get(userID);
+            // Sorts based on metric in descending order
+            potentialMatchesUser.sort(new Comparator<Match>() {
+                @Override
+                public int compare(Match m1, Match m2) {
+                    double val = (m1.getMetric() - m2.getMetric());
+                    if (val > 0) {
+                        return -1;
+                    } else if (val == 0) {
+                        return 0;
+                    } else {
+                        return 1;
+                    }
+                }
+            });
+
+            int i = 0;
+            while (matchesUser.size() < minNumberMatches && i < potentialMatchesUser.size()) {
+                Match potentialMatch = potentialMatchesUser.get(i);
+                // Checks whether potentialMatch is already in matches
+                boolean alreadyInserted = false;
+                for (Match match: matchesUser) {
+                    if (match.equals(potentialMatch)) {
+                        alreadyInserted = true;
+                        break;
+                    }
+                }
+                if (!alreadyInserted) {
+                    matchesUser.add(potentialMatch);
+                }
+                i ++;
+            }
+        }
+
+        return matches;
     }
+
+    private HashMap<String, ArrayList<Match>> potentialMatching(ArrayList<User> users) {
+        int numUsers = users.size();
+
+        // Creates a map of potential matches
+        HashMap<String, ArrayList<Match>> potentialMatches = new HashMap<>();
+        for (User user: users) {
+            potentialMatches.put(user.getId(), new ArrayList<>());
+        }
+
+        User user1;
+        User user2;
+        // Creates matches between each two users
+        for (int i = 0; i < numUsers; i++) {
+            user1 = users.get(i);
+            for (int j = i + 1; j < numUsers; j++) {
+                user2 = users.get(j);
+                Match match = new Match(user1, user2, new Date(), metric(user1, user2));
+                potentialMatches.get(user1.getId()).add(match);
+                potentialMatches.get(user2.getId()).add(match);
+            }
+        }
+    return potentialMatches;
+    }
+
 
     public double metric(User user1, User user2) {
         Profile profile1 = user1.getProfile();
@@ -29,6 +108,7 @@ public class Matcher {
 
         HashSet<Course> commonCourses = new HashSet<Course>(courses1);
         commonCourses.retainAll(courses2);  // takes the intersection
+        double metric = ((double) commonCourses.size()) / Math.min(courses1.size(), courses2.size());
 
         return commonCourses.size();
     }
