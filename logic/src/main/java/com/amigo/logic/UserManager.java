@@ -80,6 +80,7 @@ public class UserManager {
             User user = this.getUserById(entry.getKey());
             ArrayList<Match> currentMatchesUser = entry.getValue();
             user.setCurrentMatches(currentMatchesUser);
+            // users.put(entry.getKey(), user);
         }
     }
 }
