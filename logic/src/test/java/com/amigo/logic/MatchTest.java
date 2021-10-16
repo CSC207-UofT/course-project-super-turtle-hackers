@@ -4,7 +4,7 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -31,7 +31,7 @@ public class MatchTest {
                 profile2courses, "akshat@mail.utoronto.ca");
         User user1 = new User(profile1, "dien001");
         User user2 = new User(profile2, "aksh002");
-        Match match1 = new Match(user1, user2, LocalDateTime.now());
+        Match match1 = new Match(user1, user2, new Date(), 1.0/3.0);
         HashSet<Course> user1courses = new HashSet<>(match1.getUser1().getProfile().getCourses());
         HashSet<Course> user2courses = new HashSet<>(match1.getUser2().getProfile().getCourses());
         user1courses.retainAll(user2courses);
