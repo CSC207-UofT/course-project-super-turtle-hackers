@@ -32,7 +32,6 @@ public class UserTextDatabase implements UserDatabase {
      * Reads and constructs user objects from file.
      *
      * @return a list of constructed Users
-     * @throws FileNotFoundException
      */
     @Override
     public List<User> getUsers() {
@@ -53,6 +52,7 @@ public class UserTextDatabase implements UserDatabase {
     public boolean addUser(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(sourceFile, true))) {
             Profile p = user.getProfile();
+            writer.append(user.getId()).append('\n');
             writer.append(p.getName()).append('\n');
             writer.append(Integer.toString(p.getYearOfStudy())).append('\n');
             writer.append(p.getProgramOfStudy()).append('\n');
@@ -74,6 +74,7 @@ public class UserTextDatabase implements UserDatabase {
 
 
     private User readNextUser(Scanner fromFile, List<User> users) {
+        String id = fromFile.nextLine();
         String name = fromFile.nextLine();
         int year = Integer.parseInt(fromFile.nextLine());
         String prog = fromFile.nextLine();
@@ -81,12 +82,11 @@ public class UserTextDatabase implements UserDatabase {
         String contact = fromFile.nextLine();
 
         Profile prof = new Profile(name, year, prog, courses, contact);
-        // generate a random ID, this behaviour will be changed later
-        String id = name + (int) (Math.random() * 100);
         User user = new User(prof, id);
         // check delimiter
-        if (!fromFile.nextLine().equals("----")) {
-            throw new InputFormatException("Received invalid input from source");
+        String delim = fromFile.nextLine();
+        if (!delim.equals("----")) {
+            throw new InputFormatException(delim);
         }
         return user;
     }

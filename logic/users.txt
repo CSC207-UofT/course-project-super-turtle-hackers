@@ -1,55 +1,63 @@
+akshat001
 Akshat Naik
 2
 Computer Science
 CSC207, MAT237
 akshat@mail.utoronto.ca
 ----
+dien001
 Dien Nguyen
 2
 Computer Science
 CSC207, CSC236
 dien@mail.utoronto.ca
 ----
+adrian001
 Adrian Tai
 2
 Economics
 ECO200, STA247
 adrian@mail.utoronto.ca
 ----
+rue001
 Rue Sriharsha
 2
 Cognitive Science
 CSC236, MAT235
 rue@mail.utoronto.ca
 ----
+tony001
 Tony Hu
 2
 Computer Science
 CSC207, CSC209
 tony@mail.utoronto.ca
 ----
+lawrence001
 Lawrence Tsai
 2
 Chemistry
 CHM151, MAT135
 larry@mail.utoronto.ca
 ----
+miley001
 Miley Cyrus
 1
 Physics
 PHY151, MAT137
 mileycyrus@mail.utoronto.ca
 ----
+donald001
 Donald Trump
 3
 Political Science
 POL327, POL326
 donaldtrump@mail.utoronto.ca
 ----
+susan001
 Susan Cao
 2
 Political Science
 POL327, POL326
 susan@mail.utoronto.ca
-
-
+----
