@@ -34,4 +34,19 @@ public class User {
     public void setCurrentMatches(ArrayList<Match> currentMatches) {
         this.currentMatches = currentMatches;
     }
+
+    public String toStringCurrentMatches() {
+        String stringCurrentMatches = "[";
+        ArrayList<String> namesCurrentMatches = new ArrayList<>();
+        for (Match match: this.currentMatches) {
+            String otherUser;
+            if (this.equals(match.getUser1())) {
+                otherUser = match.getUser2().getProfile().getName();
+            } else {
+                otherUser = match.getUser1().getProfile().getName();
+            }
+            namesCurrentMatches.add(otherUser);
+        }
+        return namesCurrentMatches.toString();
+    }
 }

@@ -1,5 +1,6 @@
 package com.amigo.logic;
 
+import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,8 +11,10 @@ import java.util.stream.Collectors;
 public class UserManager {
 
     private Map<String, User> users;
+    private UserDatabase database;
 
     public UserManager(UserDatabase database) {
+        this.database = database;
         List<User> userList = database.getUsers();
         users = new HashMap<>(userList.size());
         for (var each : userList) {
@@ -45,6 +48,7 @@ public class UserManager {
         User user = new User(p, id);
         // TODO: not yet doing any checks of duplicates
         users.put(id, user);
+        database.addUser(user);
         return id;
     }
 
@@ -80,6 +84,7 @@ public class UserManager {
             User user = this.getUserById(entry.getKey());
             ArrayList<Match> currentMatchesUser = entry.getValue();
             user.setCurrentMatches(currentMatchesUser);
+            // users.put(entry.getKey(), user);
         }
     }
 }

@@ -20,13 +20,21 @@ public class ControlSystem {
      * Runs the app internal logic.
      */
     public void run() {
-        String response = ui.runWelcome();
-        if (response.equals("y")) {
-            login();
+        // TODO: Input users
+//        String response = ui.runWelcome();
+//        if (response.equals("y")) {
+//            login();
+//        }
+//        else {
+//            register();
+//        }
+        this.doMatching();
+        ArrayList<User> users =  new ArrayList<User>(this.manager.getUsers().values());
+        for (User user: users) {
+            Profile profile = user.getProfile();
+            System.out.println(profile.getName() + ": " + user.toStringCurrentMatches());
         }
-        else {
-            register();
-        }
+
     }
 
     private void login() {

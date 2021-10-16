@@ -37,9 +37,9 @@ public class TUI {
         System.out.print("Enter your name: ");
         // input regex taken from source
         // https://stackoverflow.com/a/40056630
-        inputs[0] = inputRegex("^([a-zA-Z]{2,}\\\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\\\s?([a-zA-Z]{1,})?)");
+        inputs[0] = inputRegex(".*");
         System.out.print("Enter your year of study: ");
-        inputs[1] = inputRegex("1-4");
+        inputs[1] = inputRegex("[1-4]");
         System.out.print("Enter your program of study: ");
         inputs[2] = inputRegex("(?:[a-zA-Z]+ *)+");
         System.out.print("Enter your courses, separated by a comma: ");
@@ -71,7 +71,7 @@ public class TUI {
             response = in.nextLine();
         }
 
-        in.close();
+//        in.close();
         return response;
     }
 
@@ -91,7 +91,7 @@ public class TUI {
             response = in.nextLine();
         }
 
-        in.close();
+//        in.close();
         return response;
     }
 }

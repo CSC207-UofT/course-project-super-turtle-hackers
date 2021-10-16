@@ -112,11 +112,22 @@ public class Matcher {
         HashSet<Course> courses1 = profile1.getCourses();
         HashSet<Course> courses2 = profile2.getCourses();
 
-        HashSet<Course> commonCourses = new HashSet<Course>(courses1);
-        commonCourses.retainAll(courses2);  // takes the intersection
-        double metric = ((double) commonCourses.size()) / Math.min(courses1.size(), courses2.size());
+        // For now only the course codes are used
+        HashSet<String> courseCodes1 = new HashSet<>();
+        HashSet<String> courseCodes2 = new HashSet<>();
 
-        return commonCourses.size();
+        for (Course course: courses1) {
+            courseCodes1.add(course.getCourseCode());
+        }
+        for (Course course: courses2) {
+            courseCodes2.add(course.getCourseCode());
+        }
+
+        HashSet<String> commonCourseCodes = new HashSet<String>(courseCodes1);
+        commonCourseCodes.retainAll(courseCodes2);  // takes the intersection
+        double metric = ((double) commonCourseCodes.size()) / Math.min(courses1.size(), courses2.size());
+
+        return metric;
     }
 
 }
