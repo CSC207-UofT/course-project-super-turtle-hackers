@@ -4,6 +4,7 @@ Amigo has 3 phases of product development. In phase 0, Users can create a profil
 
 ### CRC Model Summary:
 [Note all the classes have been bolded to emphasize the difference between the class name and actual noun.]
+
 The usecase UserManager collaborates with the entities User and Profile to create users and modify them. The interface adapter UserDatabase collaborates with the UserManager to create and update the text file storing information.
 
 The use case Matcher receives users from the controller ControlSystem and creates matches. These matches are then sent back to the ControlSystem. Then, they are sent to the UserManager who modifies the User to store the current matches. This process is repeated with the MatchHistory entity too.
@@ -12,7 +13,7 @@ The Chat entity is a collection of messages stored in the Message entity. The Re
 
 ### Scenario-Walk Through Summary:
 
-	Our scenario walk-through shows how a typical user would be using our app by referencing the CRC model. First, the ControlSystem receives input and runs the program and requests the UserManager to make a new User and Profile object. Then, the UserManager stores the Profile object in User. UserManager will communicate with UserDatabase so that the new User is logged. Next, ControlSystem will request a list of User objects and send it to Matcher, once a day. The Matcher will generate a dictionary of matches, called match dictionary based on each User’s courses and interests, and return it back to ControlSystem.The match dictionary has a key of a User object and the value would be that user’s list of matches. This match dictionary is then forward to UserManager by the Controller.  Lastly, UserManager takes the match dictionary and allocates the list of matches to each User.
+Our scenario walk-through shows how a typical user would be using our app by referencing the CRC model. First, the ControlSystem receives input and runs the program and requests the UserManager to make a new User and Profile object. Then, the UserManager stores the Profile object in User. UserManager will communicate with UserDatabase so that the new User is logged. Next, ControlSystem will request a list of User objects and send it to Matcher, once a day. The Matcher will generate a dictionary of matches, called match dictionary based on each User’s courses and interests, and return it back to ControlSystem.The match dictionary has a key of a User object and the value would be that user’s list of matches. This match dictionary is then forward to UserManager by the Controller. Lastly, UserManager takes the match dictionary and allocates the list of matches to each User.
 
 In the future we want to implement, a chat with reports as a safety feature and admins with permissions to review these reports.
 
