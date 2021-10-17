@@ -65,7 +65,14 @@ public class Matcher {
                     }
                 }
                 if (!alreadyInserted) {
+                    ArrayList<Match> otherUserMatches;
+                    if (user.equals(potentialMatch.getUser1())) {
+                        otherUserMatches = matches.get(potentialMatch.getUser2().getId());
+                    } else {
+                        otherUserMatches = matches.get(potentialMatch.getUser1().getId());
+                    }
                     matchesUser.add(potentialMatch);
+                    otherUserMatches.add(potentialMatch);
                 }
                 i ++;
             }

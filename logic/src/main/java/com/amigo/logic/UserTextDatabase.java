@@ -52,17 +52,19 @@ public class UserTextDatabase implements UserDatabase {
     public boolean addUser(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(sourceFile, true))) {
             Profile p = user.getProfile();
-            writer.append('\n');
-            writer.append(user.getId()).append('\n');
-            writer.append(p.getName()).append('\n');
-            writer.append(Integer.toString(p.getYearOfStudy())).append('\n');
-            writer.append(p.getProgramOfStudy()).append('\n');
-
             String courses = p
                     .getCourses()
                     .stream()
                     .map(Course::getCourseCode)
                     .collect(Collectors.joining(", "));
+
+            writer.append('\n');
+            writer.append(user.getId()).append('\n');
+            writer.append(p.getName()).append('\n');
+            writer.append(Integer.toString(p.getYearOfStudy())).append('\n');
+            writer.append(p.getProgramOfStudy()).append('\n');
+            writer.append(courses).append('\n');
+
             writer.append(p.getContactInfo()).append('\n');
             writer.append("----");
         }
