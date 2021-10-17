@@ -9,4 +9,6 @@ Clone the repository into Android Studio. As of right now, the program can only 
 
 `./gradlew run -q --console=plain`
 
+On Windows, simply delete the `./` or change it into `.\` (yeah Windows).
+
 It may take a little longer to run the program for the first time, as the Gradle wrapper needs to download the Gradle distribution and compile the entire project. Subsequent runs should be much faster.
