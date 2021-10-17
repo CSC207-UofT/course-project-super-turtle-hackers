@@ -1,13 +1,10 @@
 package com.amigo.logic;
 
-import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class UserManager {
 
