@@ -33,6 +33,6 @@ public class UserTextDatabaseTest {
         assertEquals(listOfUsers.get(8).getProfile().getName(), "Susan Cao");
     }
 
-    }
+}
 
 
