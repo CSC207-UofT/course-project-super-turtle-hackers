@@ -18,7 +18,8 @@ Our scenario walk-through shows how a typical user would be using our app by ref
 In the future we want to implement, a chat with reports as a safety feature and admins with permissions to review these reports.
 
 ### Skeleton program Summary:
-  The skeleton program [based on scenario walk-through, need to refer to the actual code for naming conventions] 
+
+  The user interacts with the app through the IDE terminal. The main method is in Driver Class. An instance of ControlSystem (referred to as the control system) is created and its run method runs to prompt the user to input their information. After the user inputs their information to create a new profile, an instance of UserManager (referred to as the user manager) is created by the control system. The user manager creates the profile and user objects and adds it to the database. The control system calls on the matching method in Matcher to match the users, which returns a hashmap with users and their matches. The control system then prints out a list of users and their matches.
 
 ### Open-ended questions:
 
