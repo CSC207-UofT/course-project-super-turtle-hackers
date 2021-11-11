@@ -1,9 +1,6 @@
 package com.amigo.logic.ui;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -30,6 +27,12 @@ public class TUI {
         // but we will keep it as hardcoded for now
 
         return inputRegex("\\w+");
+    }
+
+    public String runEdit() {
+        System.out.println("Do you want to edit your profile? (y/n)");
+
+        return input("y", "n");
     }
 
     public String[] runRegister() {
@@ -93,5 +96,40 @@ public class TUI {
 
 //        in.close();
         return response;
+    }
+
+    public String chooseEdit() {
+        System.out.println("Enter 1 for name, 2 for program of study, 3 for courses and 4 for contact info: ");
+        return input("1", "2", "3", "4");
+    }
+
+    public String inputNewName() {
+        System.out.println("Enter your new name: ");
+        return inputRegex(".*");
+    }
+
+    public String inputNewProgramOfStudy() {
+        System.out.println("Enter your program of study: ");
+        return inputRegex("(?:[a-zA-Z]+ *)+");
+    }
+
+    public String inputNewContactInfo() {
+        System.out.println("Enter your new contact info: ");
+        return inputRegex(".+");
+    }
+
+    public String inputAddOrRemoveCourse() {
+        System.out.println("Enter 1 to add, 2 to remove a course: ");
+        return input("1", "2");
+    }
+
+    public String inputNewCourse() {
+        System.out.println("Enter your new course code: ");
+        return inputRegex("(?:[A-Z]{3}[0-9]{3})");
+    }
+
+    public String inputRemoveCourse() {
+        System.out.println("Enter the course you want to remove: ");
+        return inputRegex("(?:[A-Z]{3}[0-9]{3})");
     }
 }
