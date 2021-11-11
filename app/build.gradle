@@ -29,6 +29,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 dependencies {
+  implementation project(':logic')
   implementation 'org.springframework.boot:spring-boot-starter-web'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
