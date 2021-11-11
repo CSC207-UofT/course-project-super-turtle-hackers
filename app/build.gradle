@@ -4,7 +4,7 @@ plugins {
   // id 'com.microsoft.azure:azure-gradle-plugins-common' version '1.1.1'
   id 'com.microsoft.azure.azurewebapp' version '1.2.0'
   id 'java'
-  id 'application'
+  // id 'application'
 }
 
 azurewebapp {
@@ -29,11 +29,14 @@ group = 'com.amigo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-mainClassName = 'com.amigo.logic.Driver'
-
-run {
-    standardInput = System.in
+springBoot {
+    mainClass = 'com.amigo.amigo.AmigoApplication'
 }
+
+// run {
+//     mainClassName = 'com.amigo.logic.Driver'
+//     standardInput = System.in
+// }
 
 dependencies {
   testImplementation 'junit:junit:4.13.1'
