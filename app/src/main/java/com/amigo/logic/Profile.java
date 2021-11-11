@@ -46,15 +46,15 @@ public class Profile {
         return courses;
     }
 
-    public void setCourses(HashSet<Course> courses) {
-        this.courses = courses;
-    }
-
     public String getContactInfo() {
         return contactInfo;
     }
 
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    public void addCourses(Course course) {
+        this.courses.add(course);
     }
 }
