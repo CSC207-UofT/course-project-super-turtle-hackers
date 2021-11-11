@@ -51,4 +51,9 @@ public class UserManagerTest {
             }
         }
     }
+
+    @Test (timeout = 100)
+    public void testCreateUser() {
+
+    }
 }
