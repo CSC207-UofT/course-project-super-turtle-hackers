@@ -1,10 +1,6 @@
 package com.amigo.logic;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class UserManager {
 
@@ -48,6 +44,36 @@ public class UserManager {
         users.put(id, user);
         database.addUser(user);
         return id;
+    }
+
+    public void editName (User user, String newName) {
+        Profile userProfile = user.getProfile();
+        userProfile.setName(newName);
+    }
+
+    public void editProgramOfStudy (User user, String newProgram) {
+        Profile userProfile = user.getProfile();
+        userProfile.setProgramOfStudy(newProgram);
+    }
+
+    public void editYearOfStudy (User user, int newYearOfStudy) {
+        Profile userProfile = user.getProfile();
+        userProfile.setYearOfStudy(newYearOfStudy);
+    }
+
+    public void addCourses (User user, Course course) {
+        Profile userProfile = user.getProfile();
+        userProfile.addCourses(course);
+    }
+
+    public void removeCourses(User user, String courseCode) {
+        HashSet<Course> courses = user.getProfile().getCourses();
+        courses.removeIf(course -> course.getCourseCode().equals(courseCode));
+    }
+
+    public void editContactInfo (User user, String newContactInfo) {
+        Profile userProfile = user.getProfile();
+        userProfile.setContactInfo(newContactInfo);
     }
 
     /**
