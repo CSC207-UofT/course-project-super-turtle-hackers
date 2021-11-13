@@ -17,7 +17,7 @@ public class LoginController {
     @GetMapping("/login")
     public String showLoginPage(Model model) {
         model.addAttribute("credentials", new Credentials());
-        return "login";
+        return "log-in-page";
     }
 
     @PostMapping("/auth")
