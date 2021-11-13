@@ -18,6 +18,7 @@ public class ControlSystem {
 
     /**
      * Runs the app internal logic.
+     * 
      */
     public void run() {
         String response = ui.runWelcome();
@@ -37,6 +38,8 @@ public class ControlSystem {
 
     /**
      * Modifies user info in memory but does not write into database.
+     *
+     * @param user  A user to be edited
      */
     private void edit(User user) {
         String response = ui.runEdit();
@@ -59,6 +62,8 @@ public class ControlSystem {
 
     /**
      * Adds or removes courses from main.
+     * 
+     * @param user  A user whose courses are to be edited
      */
     private void editCourses(User user) {
         String addOrRemoveCourse = ui.inputAddOrRemoveCourse();
@@ -74,6 +79,8 @@ public class ControlSystem {
 
     /**
      * Edits user's contact info.
+     * 
+     * @param user  A user whose contact info is to be edited
      */
     private void editContactInfo(User user) {
         String newContactInfo = ui.inputNewContactInfo();
@@ -82,6 +89,8 @@ public class ControlSystem {
 
     /**
      * Edits user's program of study.
+     * 
+     * @param user  A user whose program of study to be edited
      */
     private void editProgramOfStudy(User user) {
         String newProgramOfStudy = ui.inputNewProgramOfStudy();
@@ -90,6 +99,8 @@ public class ControlSystem {
 
     /**
      * Edits user's username.
+     * 
+     * @param user A user whose username is to be edited
      */
     private void editUserName(User user) {
         String newName = ui.inputNewName();
