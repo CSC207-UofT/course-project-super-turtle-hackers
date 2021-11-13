@@ -1,4 +1,4 @@
-package com.amigo.logic;
+package com.amigo.course;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;

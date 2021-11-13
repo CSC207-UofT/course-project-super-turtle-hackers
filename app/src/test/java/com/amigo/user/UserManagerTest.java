@@ -1,4 +1,4 @@
-package com.amigo.logic;
+package com.amigo.user;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

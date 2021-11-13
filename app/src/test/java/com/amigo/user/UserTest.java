@@ -1,22 +1,22 @@
-package com.amigo.logic;
+package com.amigo.user;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 
-public class MatcherTest {
+import org.junit.Before;
+import org.junit.Test;
+
+import com.amigo.course.Course;
+
+public class UserTest {
     @Before
     public void setUp() {
     }
 
     @Test(timeout = 100)
-    public void testMatching() {
+    public void userTest() {
         Course course1 = new Course("CSC207", "LEC0101", "TUT0501");
         Course course2 = new Course("CSC263", "LEC0201", "TUT0301");
         Course course3 = new Course("STA247", "LEC0201", "TUT0301");
@@ -38,13 +38,15 @@ public class MatcherTest {
         User user3 = new User(profile3, "tony003");
         User user4 = new User(profile4, "srir004");
 
-        ArrayList<User> listOfUsers = new ArrayList<User>(Arrays.asList(user1, user2, user3, user4));
+        assertEquals(user1.getId(), "dien001");
+        assertEquals(user2.getId(), "aksh002");
+        assertEquals(user3.getId(), "tony003");
+        assertEquals(user4.getId(), "srir004");
 
-        Matcher matcher = new Matcher();
-        HashMap<String, ArrayList<Match>> matchingResults = matcher.matching(listOfUsers);
-        assertEquals(matchingResults.get("dien001").size(), 2);
-        assertEquals(matchingResults.get("aksh002").size(), 1);
-        assertEquals(matchingResults.get("tony003").size(), 0);
-        assertEquals(matchingResults.get("srir004").size(), 1);
+        assertEquals(user1.getProfile(), profile1);
+        assertEquals(user2.getProfile(), profile2);
+        assertEquals(user3.getProfile(), profile3);
+        assertEquals(user4.getProfile(), profile4);
+
     }
 }

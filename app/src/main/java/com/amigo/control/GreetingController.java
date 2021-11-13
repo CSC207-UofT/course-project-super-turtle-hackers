@@ -1,4 +1,4 @@
-package com.amigo.amigo;
+package com.amigo.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

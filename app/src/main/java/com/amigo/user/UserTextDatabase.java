@@ -1,4 +1,4 @@
-package com.amigo.logic;
+package com.amigo.user;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import com.amigo.course.Course;
 
 public class UserTextDatabase implements UserDatabase {
 
