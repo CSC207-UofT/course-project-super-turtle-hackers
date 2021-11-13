@@ -1,4 +1,4 @@
-package course;
+package com.amigo.course;
 
 public class Course {
     private String courseCode;
