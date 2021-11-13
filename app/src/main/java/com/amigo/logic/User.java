@@ -36,7 +36,6 @@ public class User {
     }
 
     public String toStringCurrentMatches() {
-        String stringCurrentMatches = "[";
         ArrayList<String> namesCurrentMatches = new ArrayList<>();
         for (Match match: this.currentMatches) {
             String otherUser;
