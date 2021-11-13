@@ -17,20 +17,20 @@ public class CourseTest {
         Course course4 = new Course("WGS275", "LEC0101", "TUT0101");
 
 
-        assertEquals(course1.getCourseCode(), "CSC207");
-        assertEquals(course2.getCourseCode(), "CSC263");
-        assertEquals(course3.getCourseCode(), "STA247");
-        assertEquals(course4.getCourseCode(), "WGS275");
+        assertEquals("CSC207", course1.getCourseCode());
+        assertEquals("CSC263", course2.getCourseCode());
+        assertEquals("STA247", course3.getCourseCode());
+        assertEquals("WGS275", course4.getCourseCode());
 
-        assertEquals(course1.getLecture(), "LEC0101");
-        assertEquals(course2.getLecture(), "LEC0201");
-        assertEquals(course3.getLecture(), "LEC0201");
-        assertEquals(course4.getLecture(), "LEC0101");
+        assertEquals("LEC0101", course1.getLecture());
+        assertEquals("LEC0201", course2.getLecture());
+        assertEquals("LEC0201", course3.getLecture());
+        assertEquals("LEC0101", course4.getLecture());
 
-        assertEquals(course1.getTutorial(), "TUT0501");
-        assertEquals(course2.getTutorial(), "TUT0301");
-        assertEquals(course3.getTutorial(), "TUT0301");
-        assertEquals(course4.getTutorial(), "TUT0101");
+        assertEquals("TUT0501", course1.getTutorial());
+        assertEquals("TUT0301", course2.getTutorial());
+        assertEquals("TUT0301", course3.getTutorial());
+        assertEquals("TUT0101", course4.getTutorial());
 
 
     }

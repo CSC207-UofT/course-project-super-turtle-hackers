@@ -38,6 +38,6 @@ public class MatchTest {
         HashSet<Course> user1courses = new HashSet<>(match1.getUser1().getProfile().getCourses());
         HashSet<Course> user2courses = new HashSet<>(match1.getUser2().getProfile().getCourses());
         user1courses.retainAll(user2courses);
-        assertEquals(user1courses.size(),1);
+        assertEquals(1, user1courses.size());
     }
 }

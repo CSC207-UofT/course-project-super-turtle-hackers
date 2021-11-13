@@ -27,9 +27,9 @@ public class UserManagerTest {
         User firstUser = manager.getUserById(firstUserId);
         User middleUser = manager.getUserById(middleUserId);
         User lastUser = manager.getUserById(lastUserId);
-        assertEquals(firstUser.getProfile().getName(), "Akshat Naik");
-        assertEquals(middleUser.getProfile().getName(), "Tony Hu");
-        assertEquals(lastUser.getProfile().getName(), "Susan Cao");
+        assertEquals("Akshat Naik", firstUser.getProfile().getName());
+        assertEquals("Tony Hu", middleUser.getProfile().getName());
+        assertEquals( "Susan Cao", lastUser.getProfile().getName());
     }
 
     @Test (timeout = 100)
