@@ -1,9 +1,7 @@
 package com.amigo.logic;
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,5 +44,32 @@ public class UserTest {
         assertEquals(user3.getProfile(), profile3);
         assertEquals(user4.getProfile(), profile4);
 
+        ArrayList <Match> user1_current_matches = new ArrayList<Match>();
+        ArrayList <Match> user2_current_matches = new ArrayList<Match>();
+        ArrayList <Match> user3_current_matches = new ArrayList<Match>();
+        ArrayList <Match> user4_current_matches = new ArrayList<Match>();
+        Match match1 = new Match(user1, user2, new Date(), 1.0/3.0);
+        Match match2 = new Match(user1, user3, new Date(), 2.0/3.0);
+        Match match3 = new Match(user3, user4, new Date(), 1.5/3.0);
+        user1_current_matches.add(match1);
+        user1_current_matches.add(match2);
+        user2_current_matches.add(match1);
+        user3_current_matches.add(match2);
+        user3_current_matches.add(match3);
+        user4_current_matches.add(match3);
+        user1.setCurrentMatches(user1_current_matches);
+        user2.setCurrentMatches(user2_current_matches);
+        user3.setCurrentMatches(user3_current_matches);
+        user4.setCurrentMatches(user4_current_matches);
+
+        assertEquals(user1_current_matches, user1.getCurrentMatches());
+        assertEquals(user2_current_matches, user2.getCurrentMatches());
+        assertEquals(user3_current_matches, user3.getCurrentMatches());
+        assertEquals(user4_current_matches, user4.getCurrentMatches());
+        
+        assertEquals(user1.toStringCurrentMatches(), "[Akshat, Tony]");
+        assertEquals(user2.toStringCurrentMatches(), "[Dien]");
+        assertEquals(user3.toStringCurrentMatches(), "[Dien, Sriracha]");
+        assertEquals(user4.toStringCurrentMatches(), "[Tony]");
     }
 }
