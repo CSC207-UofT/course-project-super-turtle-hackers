@@ -1,6 +1,7 @@
-package com.amigo.logic;
+package com.amigo.match;
 
 import java.util.Date;
+import com.amigo.user.User;
 
 public class Match {
     private User user1;

@@ -1,10 +1,12 @@
-package com.amigo.logic;
+package com.amigo.user;
 import static org.junit.Assert.assertEquals;
 
 import java.util.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.amigo.course.Course;
 
 public class UserTest {
     @Before

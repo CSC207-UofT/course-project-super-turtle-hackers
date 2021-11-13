@@ -1,9 +1,10 @@
-package com.amigo.logic;
+package com.amigo.user;
 
 import org.junit.*;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import com.amigo.course.Course;
 
 import static org.junit.Assert.*;
 
