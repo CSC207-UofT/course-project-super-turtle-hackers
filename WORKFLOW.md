@@ -74,4 +74,25 @@ public int getPrime(int k);
 
 Unlike Git, Java documentation usually starts off with a third-person singular verb.
 
+### Formatting
+
+For Visual Studio Code, we will be using the rules defined in `eclipse-formatter.xml`. Look for `Java: Open Java Formatter Settings with Preview`.
+
 ### Best Practices
+
+#### Polymorphism
+
+Prefer type declarations with interface/super class types like `List` instead of specific implementations such as `ArrayList`, `LinkedList`, etc., since in the majority of cases the client code does not need to know the exact type. Do this:
+
+```java
+List<Integer> lst = new ArrayList<>();
+```
+
+instead of this:
+
+```java
+ArrayList<Integer> lst = new ArrayList<Integer>();
+```
+
+Also note that Java allows you to skip the type declaration on the right hand side so that you don't have to repeat the type. However, careful that you *cannot* skip typing the diamond operator `<>`, for reasons tied with backwards compatibility and raw vs. generic types.
+
