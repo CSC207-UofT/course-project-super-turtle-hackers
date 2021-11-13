@@ -1,10 +1,13 @@
-package com.amigo.logic;
+package com.amigo.match;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import com.amigo.user.User;
+import com.amigo.user.Profile;
+import com.amigo.course.Course;
 
 public class Matcher {
     /* Pseudo code for the matching algorithm

@@ -1,4 +1,4 @@
-package com.amigo.logic;
+package com.amigo.match;
 
 import org.junit.*;
 
@@ -7,6 +7,9 @@ import static org.junit.Assert.*;
 import java.util.Date;
 import java.util.Arrays;
 import java.util.HashSet;
+import com.amigo.user.User;
+import com.amigo.user.Profile;
+import com.amigo.course.Course;
 
 
 public class MatchTest {

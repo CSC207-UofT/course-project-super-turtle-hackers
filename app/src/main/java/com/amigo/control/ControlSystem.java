@@ -1,6 +1,9 @@
-package com.amigo.logic;
+package com.amigo.control;
 
 import com.amigo.logic.ui.TUI;
+import com.amigo.user.*;
+import com.amigo.match.*;
+import com.amigo.course.Course;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.amigo.amigo;
+package com.amigo.control;
 
 import com.amigo.login.Credentials;
 

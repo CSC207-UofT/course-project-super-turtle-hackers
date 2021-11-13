@@ -1,4 +1,4 @@
-package com.amigo.logic;
+package com.amigo.user;
 
 import java.util.List;
 

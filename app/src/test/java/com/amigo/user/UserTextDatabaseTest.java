@@ -1,4 +1,4 @@
-package com.amigo.logic;
+package com.amigo.user;
 
 import org.junit.*;
 import static org.junit.Assert.*;

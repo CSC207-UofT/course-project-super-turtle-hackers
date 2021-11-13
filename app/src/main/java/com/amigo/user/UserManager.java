@@ -1,6 +1,8 @@
-package com.amigo.logic;
+package com.amigo.user;
 
 import java.util.*;
+import com.amigo.course.Course;
+import com.amigo.match.Match;
 
 public class UserManager {
 

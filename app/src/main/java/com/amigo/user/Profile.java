@@ -1,6 +1,7 @@
-package com.amigo.logic;
+package com.amigo.user;
 
 import java.util.HashSet;
+import com.amigo.course.Course;
 
 public class Profile {
     private String name;

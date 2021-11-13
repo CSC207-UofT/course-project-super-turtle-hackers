@@ -1,6 +1,7 @@
-package com.amigo.logic;
+package com.amigo.user;
 
 import java.util.ArrayList;
+import com.amigo.match.Match;
 
 public class User {
     // TODO: Add a flag for report
@@ -36,7 +37,6 @@ public class User {
     }
 
     public String toStringCurrentMatches() {
-        String stringCurrentMatches = "[";
         ArrayList<String> namesCurrentMatches = new ArrayList<>();
         for (Match match: this.currentMatches) {
             String otherUser;
