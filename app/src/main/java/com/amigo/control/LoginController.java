@@ -17,13 +17,13 @@ public class LoginController {
     @GetMapping("/login")
     public String showLoginPage(Model model) {
         model.addAttribute("credentials", new Credentials());
-        return "login";
+        return "log-in";
     }
 
-    @PostMapping("/auth")
+    @PostMapping("/login-success")
     public String getCredentials(Model model, @ModelAttribute("credentials") Credentials cred) {
         model.addAttribute("name", cred.getUsername());
-        return "greeting";
+        return "log-in-success";
     }
     
 }

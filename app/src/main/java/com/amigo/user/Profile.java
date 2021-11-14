@@ -2,8 +2,11 @@ package com.amigo.user;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import javax.persistence.Entity;
 import com.amigo.course.Course;
 
+@Entity
 public class Profile {
     private String name;
     private int yearOfStudy;

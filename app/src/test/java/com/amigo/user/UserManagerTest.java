@@ -27,9 +27,9 @@ public class UserManagerTest {
         User firstUser = manager.getUserById(firstUserId);
         User middleUser = manager.getUserById(middleUserId);
         User lastUser = manager.getUserById(lastUserId);
-        assertEquals(firstUser.getProfile().getName(), "Akshat Naik");
-        assertEquals(middleUser.getProfile().getName(), "Tony Hu");
-        assertEquals(lastUser.getProfile().getName(), "Susan Cao");
+        assertEquals("Akshat Naik", firstUser.getProfile().getName());
+        assertEquals("Tony Hu", middleUser.getProfile().getName());
+        assertEquals( "Susan Cao", lastUser.getProfile().getName());
     }
 
     @Test (timeout = 100)
@@ -38,9 +38,7 @@ public class UserManagerTest {
         UserManager manager = new UserManager(db);
         List<User> listOfUsers = db.getUsers();
         Map<String, User> allUsers = manager.getUsers();
-        for (User user : listOfUsers) {
-            assertEquals(allUsers.size(), 9);
-        }
+        assertEquals(allUsers.size(), 9);
         for (User user : allUsers.values()) {
             boolean hasUser = false;
             for (User user2 : listOfUsers) {
