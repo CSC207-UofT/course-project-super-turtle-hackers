@@ -38,9 +38,7 @@ public class UserManagerTest {
         UserManager manager = new UserManager(db);
         List<User> listOfUsers = db.getUsers();
         Map<String, User> allUsers = manager.getUsers();
-        for (User user : listOfUsers) {
-            assertEquals(allUsers.size(), 9);
-        }
+        assertEquals(allUsers.size(), 9);
         for (User user : allUsers.values()) {
             boolean hasUser = false;
             for (User user2 : listOfUsers) {
