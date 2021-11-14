@@ -5,42 +5,50 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
 import com.amigo.user.User;
 import com.amigo.user.Profile;
 import com.amigo.course.Course;
 
 public class Matcher {
-    /* Pseudo code for the matching algorithm
-    * HashMap which maps each user to its potential matches
-    * HashMap which maps each user to its matches
-    * for each user in UserDatabase
-    *   if each user >= 2 matches:
-    *       skip
-    *   else:
-    *       ranks all of the users' potential matches using the metric each user
-    *       then pick the user with the highest rank and match it with the original user
-    */
-    public HashMap<String, ArrayList<Match>> matching(ArrayList<User> users) {
+
+    /**
+     * Returns a map containing the list of final matches for each user in
+     * {@code users}. Below is the pseudocode for the matching algorithm.
+     *
+     * <pre>
+     * for each user in UserDatabase
+     *   if each user >= 2 matches:
+     *       skip
+     *   else:
+     *       ranks all of the users' potential matches using the metric each user
+     *       then pick the user with the highest rank and match it with the original user
+     * </pre>
+     */
+    public Map<String, List<Match>> match(List<User> users) {
         // Creates a map of potential matches
-        HashMap<String, ArrayList<Match>> potentialMatches = this.potentialMatching(users);
+        Map<String, List<Match>> potentialMatches = this.matchPotential(users);
 
         // Initializes the final map of matches
-        HashMap<String, ArrayList<Match>> matches = new HashMap<>();
+        Map<String, List<Match>> matches = new HashMap<>();
         for (User user: users) {
             matches.put(user.getId(), new ArrayList<>());
         }
+
         int minNumberMatches = 2;
-        // A user could have less users if there are no available matches
+        // A user could have less matches if there are no available matches
 
         for (User user: users) {
             String userID = user.getId();
-            ArrayList<Match> matchesUser = matches.get(userID);
+            List<Match> matchesUser = matches.get(userID);
             // If a user already has two matches or more, move on to next user
             if (matchesUser.size() >= minNumberMatches) {
                 continue;
             }
 
-            ArrayList<Match> potentialMatchesUser = potentialMatches.get(userID);
+            List<Match> potentialMatchesUser = potentialMatches.get(userID);
             // Sorts based on metric in descending order
             potentialMatchesUser.sort(new Comparator<Match>() {
                 @Override
@@ -68,7 +76,7 @@ public class Matcher {
                     }
                 }
                 if (!alreadyInserted) {
-                    ArrayList<Match> otherUserMatches;
+                    List<Match> otherUserMatches;
                     if (user.equals(potentialMatch.getUser1())) {
                         otherUserMatches = matches.get(potentialMatch.getUser2().getId());
                     } else {
@@ -84,12 +92,16 @@ public class Matcher {
         return matches;
     }
 
-    private HashMap<String, ArrayList<Match>> potentialMatching(ArrayList<User> users) {
+    /**
+     * Returns a map containing the list of all potential matches for each user in
+     * {@code users}. Each possible pair of users is evaluated by a metric function.
+     */
+    private Map<String, List<Match>> matchPotential(List<User> users) {
         // TODO: Add Wildcard Matches
         int numUsers = users.size();
 
         // Creates a map of potential matches
-        HashMap<String, ArrayList<Match>> potentialMatches = new HashMap<>();
+        Map<String, List<Match>> potentialMatches = new HashMap<>();
         for (User user: users) {
             potentialMatches.put(user.getId(), new ArrayList<>());
         }
@@ -109,10 +121,12 @@ public class Matcher {
                 }
             }
         }
-    return potentialMatches;
+        return potentialMatches;
     }
 
-
+    /**
+     * Returns the metric representing the closeness of match between two users.
+     */
     public double metric(User user1, User user2) {
         // TODO: Improve metric to include more than just courses
         Profile profile1 = user1.getProfile();
@@ -133,7 +147,7 @@ public class Matcher {
             courseCodes2.add(course.getCourseCode());
         }
 
-        HashSet<String> commonCourseCodes = new HashSet<String>(courseCodes1);
+        HashSet<String> commonCourseCodes = new HashSet<>(courseCodes1);
         commonCourseCodes.retainAll(courseCodes2);  // takes the intersection
         double metric = ((double) commonCourseCodes.size()) / Math.min(courses1.size(), courses2.size());
 
