@@ -1,5 +1,6 @@
 package com.amigo.user;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import com.amigo.course.Course;
 
@@ -45,6 +46,14 @@ public class Profile {
 
     public HashSet<Course> getCourses() {
         return courses;
+    }
+
+    public ArrayList<String> getCoursesList() {
+        ArrayList<String> coursesStringList = new ArrayList<>();
+        for (Course course : courses) {
+            coursesStringList.add(course.toString());
+        }
+        return coursesStringList;
     }
 
     public String getContactInfo() {

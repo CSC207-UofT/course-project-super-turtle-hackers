@@ -26,4 +26,10 @@ public class Course {
         this.lecture = lecture;
         this.tutorial = tutorial;
     }
+
+    public String toString() {
+        return "Course{" + courseCode + ", "
+                + lecture + ", "
+                + tutorial;
+    }
 }
