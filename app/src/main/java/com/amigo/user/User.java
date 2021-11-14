@@ -2,13 +2,19 @@ package com.amigo.user;
 
 import java.util.ArrayList;
 import java.util.List;
+// import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import com.amigo.match.Match;
 
+@Entity
 public class User {
     // TODO: Add a flag for report
     // TODO: Add a checkbox for Wildcard Matching
     private Profile profile;
+    @Id
+    // @Column(name = "id")
     private String id;
     private List<Match> currentMatches;
 //    private matchHistory matchHistory; not used for phase 0

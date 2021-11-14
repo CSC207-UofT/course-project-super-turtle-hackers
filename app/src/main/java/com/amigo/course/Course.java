@@ -1,9 +1,17 @@
 package com.amigo.course;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * A course that the user is taking.
  */
+@Entity
 public class Course {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
     private String courseCode;
     private String lecture;
     private String tutorial;
