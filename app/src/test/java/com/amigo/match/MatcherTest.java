@@ -48,7 +48,7 @@ public class MatcherTest {
 
         Matcher matcher = new Matcher();
 
-        HashMap<String, ArrayList<Match>> matchingResults = matcher.match(listOfUsers);
+        Map<String, List<Match>> matchingResults = matcher.match(listOfUsers);
         assertEquals(2, matchingResults.get("dien001").size());
         assertEquals(1, matchingResults.get("aksh002").size());
         assertEquals(0, matchingResults.get("tony003").size());
