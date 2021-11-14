@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.amigo.course.Course;
+import com.amigo.match.Match;
 
 public class UserTest {
     @Before
