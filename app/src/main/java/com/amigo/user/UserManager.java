@@ -104,11 +104,11 @@ public class UserManager {
      *
      * @param matches
      */
-    public void modifyCurrentMatches(HashMap<String, ArrayList<Match>> matches) {
+    public void modifyCurrentMatches(Map<String, List<Match>> matches) {
         // TODO: Add the previous current matches of each user to their match history
-        for (Map.Entry<String, ArrayList<Match>> entry: matches.entrySet()) {
+        for (var entry: matches.entrySet()) {
             User user = this.getUserById(entry.getKey());
-            ArrayList<Match> currentMatchesUser = entry.getValue();
+            List<Match> currentMatchesUser = entry.getValue();
             user.setCurrentMatches(currentMatchesUser);
             // users.put(entry.getKey(), user);
         }

@@ -1,6 +1,8 @@
 package com.amigo.user;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import com.amigo.match.Match;
 
 public class User {
@@ -8,7 +10,7 @@ public class User {
     // TODO: Add a checkbox for Wildcard Matching
     private Profile profile;
     private String id;
-    private ArrayList<Match> currentMatches;
+    private List<Match> currentMatches;
 //    private matchHistory matchHistory; not used for phase 0
 
     public User(Profile profile, String id) {
@@ -25,14 +27,14 @@ public class User {
         return id;
     }
 
-    public ArrayList<Match> getCurrentMatches() {return currentMatches;}
+    public List<Match> getCurrentMatches() {return currentMatches;}
 
     public boolean equals(User user) {
         // If the ID of this user and the user is the same, then  return true
         return this.getId().equals(user.getId());
     }
 
-    public void setCurrentMatches(ArrayList<Match> currentMatches) {
+    public void setCurrentMatches(List<Match> currentMatches) {
         this.currentMatches = currentMatches;
     }
 

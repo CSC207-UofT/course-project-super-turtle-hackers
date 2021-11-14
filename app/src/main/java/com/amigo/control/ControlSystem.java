@@ -7,6 +7,8 @@ import com.amigo.course.Course;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ControlSystem {
 
@@ -139,7 +141,7 @@ public class ControlSystem {
     public void doMatching() {
         ArrayList<User> users = new ArrayList<User>(this.manager.getUsers().values());
         Matcher matcher = new Matcher();
-        HashMap<String, ArrayList<Match>> matchResults = matcher.matching(users);
+        Map<String, List<Match>> matchResults = matcher.match(users);
         this.manager.modifyCurrentMatches(matchResults);
     }
 }

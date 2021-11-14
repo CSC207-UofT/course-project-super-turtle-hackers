@@ -5,6 +5,9 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
 import com.amigo.user.User;
 import com.amigo.user.Profile;
 import com.amigo.course.Course;
@@ -20,12 +23,12 @@ public class Matcher {
     *       ranks all of the users' potential matches using the metric each user
     *       then pick the user with the highest rank and match it with the original user
     */
-    public HashMap<String, ArrayList<Match>> matching(ArrayList<User> users) {
+    public Map<String, List<Match>> match(List<User> users) {
         // Creates a map of potential matches
-        HashMap<String, ArrayList<Match>> potentialMatches = this.potentialMatching(users);
+        Map<String, List<Match>> potentialMatches = this.potentialMatching(users);
 
         // Initializes the final map of matches
-        HashMap<String, ArrayList<Match>> matches = new HashMap<>();
+        Map<String, List<Match>> matches = new HashMap<>();
         for (User user: users) {
             matches.put(user.getId(), new ArrayList<>());
         }
@@ -34,13 +37,13 @@ public class Matcher {
 
         for (User user: users) {
             String userID = user.getId();
-            ArrayList<Match> matchesUser = matches.get(userID);
+            List<Match> matchesUser = matches.get(userID);
             // If a user already has two matches or more, move on to next user
             if (matchesUser.size() >= minNumberMatches) {
                 continue;
             }
 
-            ArrayList<Match> potentialMatchesUser = potentialMatches.get(userID);
+            List<Match> potentialMatchesUser = potentialMatches.get(userID);
             // Sorts based on metric in descending order
             potentialMatchesUser.sort(new Comparator<Match>() {
                 @Override
@@ -68,7 +71,7 @@ public class Matcher {
                     }
                 }
                 if (!alreadyInserted) {
-                    ArrayList<Match> otherUserMatches;
+                    List<Match> otherUserMatches;
                     if (user.equals(potentialMatch.getUser1())) {
                         otherUserMatches = matches.get(potentialMatch.getUser2().getId());
                     } else {
@@ -84,12 +87,12 @@ public class Matcher {
         return matches;
     }
 
-    private HashMap<String, ArrayList<Match>> potentialMatching(ArrayList<User> users) {
+    private Map<String, List<Match>> potentialMatching(List<User> users) {
         // TODO: Add Wildcard Matches
         int numUsers = users.size();
 
         // Creates a map of potential matches
-        HashMap<String, ArrayList<Match>> potentialMatches = new HashMap<>();
+        Map<String, List<Match>> potentialMatches = new HashMap<>();
         for (User user: users) {
             potentialMatches.put(user.getId(), new ArrayList<>());
         }
@@ -109,7 +112,7 @@ public class Matcher {
                 }
             }
         }
-    return potentialMatches;
+        return potentialMatches;
     }
 
 
