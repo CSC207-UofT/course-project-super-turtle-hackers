@@ -38,3 +38,6 @@ out/
 
 ### Misc ###
 local.properties
+
+### Azure Personal Credentials ###
+app/src/main/resources/application.properties
