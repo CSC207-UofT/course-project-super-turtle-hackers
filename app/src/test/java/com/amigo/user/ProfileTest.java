@@ -40,46 +40,46 @@ public class ProfileTest {
     @Test(timeout = 100)
     public void testGetCourses() {
         HashSet<Course> courseList = new HashSet<>(Arrays.asList(course1, course2));
-        assertEquals(newProfile.getCourses(), courseList);
+        assertEquals(courseList, newProfile.getCourses());
     }
 
     @Test(timeout = 100)
     public void testGetProgramOfStudy() {
-        assertEquals(newProfile.getProgramOfStudy(), "Political Science");
+        assertEquals("Political Science", newProfile.getProgramOfStudy());
     }
 
     @Test(timeout = 100)
     public void testGetYearOfStudy() {
-        assertEquals(newProfile.getYearOfStudy(), 3);
+        assertEquals(3, newProfile.getYearOfStudy());
     }
 
     @Test(timeout = 100)
     public void testGetContactInfo() {
-        assertEquals(newProfile.getContactInfo(), "maeve@gmail.com");
+        assertEquals("maeve@gmail.com", newProfile.getContactInfo());
     }
 
     @Test(timeout = 100)
     public void testSetName() {
         newProfile.setName("Patrick");
-        assertEquals(newProfile.getName(), "Patrick");
+        assertEquals("Patrick", newProfile.getName());
     }
 
     @Test(timeout = 100)
     public void testAddCourses() {
         Course course3 = new Course("MAT237");
         newProfile.addCourses(course3);
-        assertEquals(newProfile.getCourses().size(), 3);
+        assertEquals( 3, newProfile.getCourses().size());
     }
 
     @Test(timeout = 100)
     public void testSetProgramOfStudy() {
         newProfile.setProgramOfStudy("Anthropology");
-        assertEquals(newProfile.getProgramOfStudy(), "Anthropology");
+        assertEquals("Anthropology", newProfile.getProgramOfStudy());
     }
 
     @Test (timeout = 100)
     public void testSetContactInfo() {
         newProfile.setContactInfo("@maeve123");
-        assertEquals(newProfile.getContactInfo(), "@maeve123");
+        assertEquals("@maeve123", newProfile.getContactInfo());
     }
 }
