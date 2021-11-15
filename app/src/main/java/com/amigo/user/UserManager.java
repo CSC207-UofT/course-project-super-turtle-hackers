@@ -36,7 +36,7 @@ public class UserManager {
 
     /**
      *
-     * @param userInfo
+     * @param userInfo string containing user's information
      * @param writeToDatabase
      * @return the new user's id
      */
