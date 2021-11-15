@@ -1,4 +1,4 @@
-package com.amigo.login;
+package com.amigo.form;
 
 /**
  * User credentials for login.
@@ -10,19 +10,31 @@ public class Credentials {
     private String username;
     private String password;
 
+    /**
+     * Returns the username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Returns the password
+     */
     public String getPassword() {
         return password;
     }
 
     // must provide setter for Thymeleaf to inject value
+    /**
+     * Creates a username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Creates a password
+     */
     public void setPassword(String password) {
         this.password = password;
     }

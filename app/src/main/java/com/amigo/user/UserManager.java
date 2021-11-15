@@ -5,6 +5,9 @@ import com.amigo.course.Course;
 import com.amigo.course.CourseSetFactory;
 import com.amigo.match.Match;
 
+/**
+ * UserManager creates and manages users
+ */
 public class UserManager {
 
     private Map<String, User> users;
@@ -13,6 +16,10 @@ public class UserManager {
     private final ProfileFactory profileFactory;
     private final CourseSetFactory courseSetFactory;
 
+    /**
+     * Creates a UserManager using the users in the database and
+     * maps the ids with the users into a hashmap
+     */
     public UserManager(UserDatabase database) {
         this.database = database;
         this.userFactory = new UserFactory();
@@ -26,10 +33,16 @@ public class UserManager {
         }
     }
 
+    /**
+     * Returns a user id
+     */
     public User getUserById(String id) {
         return users.get(id);
     }
 
+    /**
+     * Returns a hashmap of user ids mapped to the user
+     */
     public Map<String, User> getUsers() {
         return users;
     }
@@ -54,31 +67,49 @@ public class UserManager {
         return user.getId();
     }
 
+    /**
+     * Edits a user's name
+     */
     public void editName (User user, String newName) {
         Profile userProfile = user.getProfile();
         userProfile.setName(newName);
     }
 
+    /**
+     * Edits a user's program of study
+     */
     public void editProgramOfStudy (User user, String newProgram) {
         Profile userProfile = user.getProfile();
         userProfile.setProgramOfStudy(newProgram);
     }
 
+    /**
+     * Edits a user's year of study
+     */
     public void editYearOfStudy (User user, int newYearOfStudy) {
         Profile userProfile = user.getProfile();
         userProfile.setYearOfStudy(newYearOfStudy);
     }
 
+    /**
+     * Adds a course to a user's profile
+     */
     public void addCourses (User user, Course course) {
         Profile userProfile = user.getProfile();
         userProfile.addCourses(course);
     }
 
+    /**
+     * Removes a course from a user's profile
+     */
     public void removeCourses(User user, String courseCode) {
         HashSet<Course> courses = user.getProfile().getCourses();
         courses.removeIf(course -> course.getCourseCode().equals(courseCode));
     }
 
+    /**
+     * Edits a user's contact info
+     */
     public void editContactInfo (User user, String newContactInfo) {
         Profile userProfile = user.getProfile();
         userProfile.setContactInfo(newContactInfo);
@@ -91,11 +122,11 @@ public class UserManager {
      *
      * @param matches
      */
-    public void modifyCurrentMatches(HashMap<String, ArrayList<Match>> matches) {
+    public void modifyCurrentMatches(Map<String, List<Match>> matches) {
         // TODO: Add the previous current matches of each user to their match history
-        for (Map.Entry<String, ArrayList<Match>> entry: matches.entrySet()) {
+        for (var entry: matches.entrySet()) {
             User user = this.getUserById(entry.getKey());
-            ArrayList<Match> currentMatchesUser = entry.getValue();
+            List<Match> currentMatchesUser = entry.getValue();
             user.setCurrentMatches(currentMatchesUser);
             // users.put(entry.getKey(), user);
         }

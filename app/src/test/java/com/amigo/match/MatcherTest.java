@@ -1,17 +1,15 @@
 package com.amigo.match;
 
-import org.junit.*;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.*;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import com.amigo.course.Course;
-import com.amigo.user.User;
 import com.amigo.user.Profile;
+import com.amigo.user.User;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class MatcherTest {
     @Before
@@ -44,10 +42,12 @@ public class MatcherTest {
         ArrayList<User> listOfUsers = new ArrayList<User>(Arrays.asList(user1, user2, user3, user4));
 
         Matcher matcher = new Matcher();
-        HashMap<String, ArrayList<Match>> matchingResults = matcher.matching(listOfUsers);
+
+        Map<String, List<Match>> matchingResults = matcher.match(listOfUsers);
         assertEquals(2, matchingResults.get("dien001").size());
         assertEquals(1, matchingResults.get("aksh002").size());
         assertEquals(0, matchingResults.get("tony003").size());
         assertEquals(1, matchingResults.get("srir004").size());
+
     }
 }

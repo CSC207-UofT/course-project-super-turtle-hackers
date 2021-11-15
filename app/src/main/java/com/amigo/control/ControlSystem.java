@@ -6,13 +6,20 @@ import com.amigo.match.*;
 import com.amigo.course.Course;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+/**
+ * Control system for the app
+ */
 public class ControlSystem {
 
     private TUI ui;
     private UserManager manager;
 
+    /**
+     * Creates the necessary components for the program to run
+     */
     public ControlSystem() {
         UserDatabase db = new UserTextDatabase();
         manager = new UserManager(db);
@@ -139,7 +146,7 @@ public class ControlSystem {
     public void doMatching() {
         ArrayList<User> users = new ArrayList<User>(this.manager.getUsers().values());
         Matcher matcher = new Matcher();
-        HashMap<String, ArrayList<Match>> matchResults = matcher.matching(users);
+        Map<String, List<Match>> matchResults = matcher.match(users);
         this.manager.modifyCurrentMatches(matchResults);
     }
 }
