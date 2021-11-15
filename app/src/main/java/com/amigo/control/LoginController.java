@@ -1,6 +1,6 @@
 package com.amigo.control;
 
-import com.amigo.login.Credentials;
+import com.amigo.form.Credentials;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
