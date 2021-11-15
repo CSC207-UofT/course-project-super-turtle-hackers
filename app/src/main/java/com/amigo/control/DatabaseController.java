@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Controller for database
  */
 @Controller
-@RequestMapping(path="/amigo")
+@RequestMapping(path="/data")
 public class DatabaseController {
     // @Autowired
     // private UserRepository userRepository;
@@ -37,7 +37,7 @@ public class DatabaseController {
     /**
      * Returns all the courses saved in the database
      */
-    @GetMapping(path="/all")
+    @GetMapping(path="/allcourses")
     public @ResponseBody List<Course> getAllCourses() {
         return courseRepository.findAll();
     }
