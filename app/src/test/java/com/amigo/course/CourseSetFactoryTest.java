@@ -23,6 +23,7 @@ public class CourseSetFactoryTest {
 
         assertEquals(3, courseSet1.size());
         assertEquals(1, courseSet2.size());
+        //TODO: add more testing
 
     }
 }
