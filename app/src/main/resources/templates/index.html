@@ -41,7 +41,7 @@
           alt="">
         <div class="w-form">
           <form id="email-form" name="email-form" class="form"
-            th:action="@{/input-courses}" th:object="${regInfo}" method="get">
+            th:action="@{/input-courses}" th:object="${regForm}" method="get">
             <label for="name">Create Account</label>
             <input type="email" class="text-field w-input" maxlength="256"
               name="name" placeholder="Firstname.Lastname@mail.utoronto.ca" id="name"
@@ -61,8 +61,7 @@
               class="text-field w-input" maxlength="256" name="Confirm-Password"
               placeholder="Confirm Password" id="Confirm-Password" required=""
               th:field="*{password}">
-            <input type="submit" value="Register"
-              class="submit-button-3 w-button">
+            <input type="submit" value="Register" class="submit-button-3 w-button">
           </form>
           <div class="w-form-done">
             <div>Thank you! Your submission has been received!</div>
