@@ -29,14 +29,23 @@ public class Course {
         this.tutorial = tutorial;
     }
 
+    /**
+     * Returns the course code
+     */
     public String getCourseCode() {
         return courseCode;
     }
 
+    /**
+     * Returns the lecture section
+     */
     public String getLecture() {
         return lecture;
     }
 
+    /**
+     * Returns the tutorial section
+     */
     public String getTutorial() {
         return tutorial;
     }

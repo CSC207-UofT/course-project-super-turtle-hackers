@@ -9,11 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Control system for the app
+ */
 public class ControlSystem {
 
     private TUI ui;
     private UserManager manager;
 
+    /**
+     * Creates the necessary components for the program to run
+     */
     public ControlSystem() {
         UserDatabase db = new UserTextDatabase();
         manager = new UserManager(db);

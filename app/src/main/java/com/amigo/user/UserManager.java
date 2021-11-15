@@ -4,11 +4,18 @@ import java.util.*;
 import com.amigo.course.Course;
 import com.amigo.match.Match;
 
+/**
+ * UserManager creates and manages users
+ */
 public class UserManager {
 
     private Map<String, User> users;
     private UserDatabase database;
 
+    /**
+     * Creates a UserManager using the users in the database and
+     * maps the ids with the users into a hashmap
+     */
     public UserManager(UserDatabase database) {
         this.database = database;
         List<User> userList = database.getUsers();
@@ -19,16 +26,22 @@ public class UserManager {
         }
     }
 
+    /**
+     * Returns a user id
+     */
     public User getUserById(String id) {
         return users.get(id);
     }
 
+    /**
+     * Returns a hashmap of user ids mapped to the user
+     */
     public Map<String, User> getUsers() {
         return users;
     }
 
     /**
-     *
+     * Creates a new user
      * @param userInfo
      * @param writeToDatabase
      * @return the new user's id
@@ -48,31 +61,49 @@ public class UserManager {
         return id;
     }
 
+    /**
+     * Edits a user's name
+     */
     public void editName (User user, String newName) {
         Profile userProfile = user.getProfile();
         userProfile.setName(newName);
     }
 
+    /**
+     * Edits a user's program of study
+     */
     public void editProgramOfStudy (User user, String newProgram) {
         Profile userProfile = user.getProfile();
         userProfile.setProgramOfStudy(newProgram);
     }
 
+    /**
+     * Edits a user's year of study
+     */
     public void editYearOfStudy (User user, int newYearOfStudy) {
         Profile userProfile = user.getProfile();
         userProfile.setYearOfStudy(newYearOfStudy);
     }
 
+    /**
+     * Adds a course to a user's profile
+     */
     public void addCourses (User user, Course course) {
         Profile userProfile = user.getProfile();
         userProfile.addCourses(course);
     }
 
+    /**
+     * Removes a course from a user's profile
+     */
     public void removeCourses(User user, String courseCode) {
         HashSet<Course> courses = user.getProfile().getCourses();
         courses.removeIf(course -> course.getCourseCode().equals(courseCode));
     }
 
+    /**
+     * Edits a user's contact info
+     */
     public void editContactInfo (User user, String newContactInfo) {
         Profile userProfile = user.getProfile();
         userProfile.setContactInfo(newContactInfo);
