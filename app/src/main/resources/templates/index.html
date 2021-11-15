@@ -40,25 +40,29 @@
           srcset="images/Step1-p-500.png 500w, images/Step1-p-800.png 800w, images/Step1-p-1080.png 1080w, images/Step1.png 1440w"
           alt="">
         <div class="w-form">
-          <form id="email-form" name="email-form" data-name="Email Form"
-            redirect="https://csc207-webapp-final.webflow.io/create-account-1"
-            data-redirect="https://csc207-webapp-final.webflow.io/create-account-1" class="form">
+          <form id="email-form" name="email-form" class="form"
+            th:action="@{/input-courses}" th:object="${regInfo}" method="get">
             <label for="name">Create Account</label>
             <input type="email" class="text-field w-input" maxlength="256"
-              name="name" data-name="Name" placeholder="Firstname.Lastname@mail.utoronto.ca" id="name"
-              required="">
+              name="name" placeholder="Firstname.Lastname@mail.utoronto.ca" id="name"
+              required=""
+              th:field="*{email}">
             <input type="text" class="text-field w-input" maxlength="256" name="First-Name"
-              data-name="First Name" placeholder="First Name" id="First-Name" required="">
+              placeholder="First Name" id="First-Name" required=""
+              th:field="*{firstName}">
             <input type="text"
-              class="text-field w-input" maxlength="256" name="Last-Name" data-name="Last Name" placeholder="Last Name"
-              id="Last-Name" required="">
-            <input type="text" class="text-field w-input" maxlength="256" name="Password"
-              data-name="Password" placeholder="Password" id="Password" required="">
-            <input type="text"
-              class="text-field w-input" maxlength="256" name="Confirm-Password" data-name="Confirm Password"
-              placeholder="Confirm Password" id="Confirm-Password" required="">
+              class="text-field w-input" maxlength="256" name="Last-Name" placeholder="Last Name"
+              id="Last-Name" required=""
+              th:field="*{lastName}">
+            <input type="password" class="text-field w-input" maxlength="256" name="Password"
+              placeholder="Password" id="Password" required=""
+              th:field="*{password}">
+            <input type="password"
+              class="text-field w-input" maxlength="256" name="Confirm-Password"
+              placeholder="Confirm Password" id="Confirm-Password" required=""
+              th:field="*{password}">
             <input type="submit" value="Register"
-              data-wait="Please wait..." class="submit-button-3 w-button">
+              class="submit-button-3 w-button">
           </form>
           <div class="w-form-done">
             <div>Thank you! Your submission has been received!</div>
