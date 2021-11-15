@@ -1,6 +1,8 @@
 package com.amigo.control;
 
 import java.util.List;
+import java.util.Optional;
+
 import com.amigo.course.Course;
 import com.amigo.course.CourseRepository;
 // // import com.amigo.user.UserRepository;
@@ -24,12 +26,13 @@ public class DatabaseController {
     @Autowired
     private CourseRepository courseRepository;
 
-    /**
-     * Returns "saved" if a course is added (saved) to the database
-     */
+    // /**
+    //  * Returns "saved" if a course is added (saved) to the database
+    //  */
+
     @PostMapping(path="/addcourse")
-    public @ResponseBody String addNewCourse(@RequestParam String courseCode) {
-        Course course = new Course(courseCode);
+    public @ResponseBody String addNewCourse(@RequestParam String courseCode, @RequestParam String tutorialCode, @RequestParam String lectureCode) {
+        Course course = new Course(courseCode, lectureCode, tutorialCode);
         courseRepository.save(course);
         return "Saved";
     }
