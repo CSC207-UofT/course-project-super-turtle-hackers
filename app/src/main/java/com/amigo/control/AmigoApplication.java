@@ -9,7 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication(scanBasePackages = {"com.amigo.control", "com.amigo.course"})
 @EntityScan(basePackages = {"com.amigo.course"})
 @EnableJpaRepositories(basePackages =  {"com.amigo.course"})
-@ComponentScan("com.amigo")
+@ComponentScan("com.amigo") // enabling component scan for same-level packages (by indicating closest common
+                            // parent package)
 public class AmigoApplication {
 
 	public static void main(String[] args) {
