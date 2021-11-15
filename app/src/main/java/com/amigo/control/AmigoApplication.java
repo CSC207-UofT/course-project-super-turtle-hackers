@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = {"com.amigo.control", "com.amigo.course"})
 @EntityScan(basePackages = {"com.amigo.course"})
-@EnableJpaRepositories("com.amigo.course")
+@EnableJpaRepositories(basePackages =  {"com.amigo.course"})
 public class AmigoApplication {
 
 	public static void main(String[] args) {
