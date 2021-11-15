@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = {"com.amigo.control", "com.amigo.course"})
-@EntityScan(basePackages = {"com.amigo.course", "com.amigo.user"})
-@EnableJpaRepositories(basePackages =  {"com.amigo.course", "com.amigo.user"})
+@EntityScan(basePackages = {"com.amigo.course"})
+@EnableJpaRepositories(basePackages =  {"com.amigo.course"})
 public class AmigoApplication {
 
 	public static void main(String[] args) {
