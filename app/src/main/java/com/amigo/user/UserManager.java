@@ -47,7 +47,6 @@ public class UserManager {
         HashSet<Course> courses = courseSetFactory.createCourseSet(userInfo[3]);
         String contact = userInfo[4];
         Profile p = profileFactory.createProfile(name, year, prog, courses, contact);
-//        String id = name.split(" ")[0].toLowerCase() + (int) (1000 * Math.random() + 1);
         User user = userFactory.createUser(p);
         // TODO: not yet doing any checks of duplicates
         users.put(user.getId(), user);
