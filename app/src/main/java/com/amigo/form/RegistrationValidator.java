@@ -9,6 +9,6 @@ import org.springframework.stereotype.Service;
 public class RegistrationValidator {
     
     public boolean validateRegistration() {
-        return false;
+        return true;
     }
 }

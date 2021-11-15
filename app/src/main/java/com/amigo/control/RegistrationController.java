@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegistrationController {
 
+    /**
+     * Validates registration.
+     */
     @Autowired
     RegistrationValidator validator;
     
@@ -25,14 +28,22 @@ public class RegistrationController {
         return "index";
     }
     
-    @GetMapping("/register-courses")
-    public String showInputCourses(Model model, @ModelAttribute("regForm") RegistrationForm form) {
+    @PostMapping("/")
+    public String validateRegistration(Model model, @ModelAttribute("regForm") RegistrationForm form) {
         boolean isValidRegistration = validator.validateRegistration();
         
+        // this doesn't work yet
         if (!isValidRegistration) {
             model.addAttribute("errorMessage", "This means you failed.");
             return "index";
         }
+        return "redirect:/register-courses";
+    }
+
+    @GetMapping("/register-courses")
+    public String showRegisterCoursePage(Model model) {
+        model.addAttribute("courseForm", "hello");
+        System.out.println("print");
         return "register-courses";
     }
 }
