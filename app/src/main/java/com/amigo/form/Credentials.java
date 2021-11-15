@@ -1,4 +1,4 @@
-package com.amigo.login;
+package com.amigo.form;
 
 /**
  * User credentials for login.
