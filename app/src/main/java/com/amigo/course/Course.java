@@ -17,6 +17,11 @@ public class Course {
     private String tutorial;
 
     /**
+     * Creates a course using the default constructor
+     */
+    public Course() {}
+
+    /**
      * Creates a course with only the courseCode
      */
     public Course(String courseCode) {

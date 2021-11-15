@@ -18,6 +18,11 @@ public class Profile {
     private String contactInfo;
 
     /**
+     * Creates a profile using the default constructor
+     */
+    public Profile() {}
+    
+    /**
      * Creates a profile containing a name, year of study, program of study, courses and contact info.
      */
     public Profile(String name, int yearOfStudy, String programOfStudy, HashSet<Course> courses,

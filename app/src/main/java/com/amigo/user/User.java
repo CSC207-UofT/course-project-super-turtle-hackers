@@ -23,6 +23,11 @@ public class User {
 //    private matchHistory matchHistory; not used for phase 0
 
     /**
+     * Creates a user using the default constructor
+     */
+    public User() {}
+
+    /**
      * Creates a user containing an id, a profile and an empty list of current matches.
      */
     public User(Profile profile, String id) {
