@@ -20,8 +20,8 @@ public class RegistrationController {
         return "index";
     }
     
-    @GetMapping("/input-courses")
+    @GetMapping("/register-courses")
     public String showInputCourses(Model model) {
-        return "input-courses";
+        return "register-courses";
     }
 }
