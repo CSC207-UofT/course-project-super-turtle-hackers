@@ -66,7 +66,7 @@ public class RegistrationController {
         // redirect a POST request to another POST request
         request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
         // add request parameter
-        attributes.addAttribute("courseCode", form1.getCourseCode());
+        // attributes.addAttribute("courseCode", form1.getCourseCode());
         return "redirect:/data/addcourse";
     }
 }
