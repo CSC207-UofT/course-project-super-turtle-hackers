@@ -17,8 +17,9 @@ public class UserManager {
     private final CourseSetFactory courseSetFactory;
 
     /**
-     * Creates a UserManager using the users in the database and
-     * maps the ids with the users into a hashmap
+     * Constructs UserManager, and creates and store UserFactory, ProfileFactory and CourseSetFactory objects, and
+     * creates Map of users and id.
+     * @param database database that stores users
      */
     public UserManager(UserDatabase database) {
         this.database = database;
@@ -34,7 +35,9 @@ public class UserManager {
     }
 
     /**
-     * Returns a user id
+     * Retrieves and returns User using the unique identification.
+     * @param id the unique identification of each User
+     * @return User with the id
      */
     public User getUserById(String id) {
         return users.get(id);
@@ -48,7 +51,7 @@ public class UserManager {
     }
 
     /**
-     *
+     * Creates a new user using information given.
      * @param userInfo string containing user's information
      * @param writeToDatabase
      * @return the new user's id
@@ -68,7 +71,9 @@ public class UserManager {
     }
 
     /**
-     * Edits a user's name
+     * Modifies the User's name with the new name.
+     * @param user User object that is to be modified
+     * @param newName the new name
      */
     public void editName (User user, String newName) {
         Profile userProfile = user.getProfile();
@@ -76,7 +81,9 @@ public class UserManager {
     }
 
     /**
-     * Edits a user's program of study
+     * Modifies the User's program of study.
+     * @param user User object that is to be modified
+     * @param newProgram the new program
      */
     public void editProgramOfStudy (User user, String newProgram) {
         Profile userProfile = user.getProfile();
@@ -84,7 +91,9 @@ public class UserManager {
     }
 
     /**
-     * Edits a user's year of study
+     * Modifies the User's year of study
+     * @param user User object that is to be modified
+     * @param newYearOfStudy the new year of study
      */
     public void editYearOfStudy (User user, int newYearOfStudy) {
         Profile userProfile = user.getProfile();
@@ -92,7 +101,9 @@ public class UserManager {
     }
 
     /**
-     * Adds a course to a user's profile
+     * Adds a new course to the user profile
+     * @param user User object that is to be modified
+     * @param course Course object to be added
      */
     public void addCourses (User user, Course course) {
         Profile userProfile = user.getProfile();
@@ -100,7 +111,9 @@ public class UserManager {
     }
 
     /**
-     * Removes a course from a user's profile
+     * Removes a course from the user profile
+     * @param user User object that is to be modified
+     * @param courseCode Course code of course to be removed
      */
     public void removeCourses(User user, String courseCode) {
         HashSet<Course> courses = user.getProfile().getCourses();
@@ -108,7 +121,9 @@ public class UserManager {
     }
 
     /**
-     * Edits a user's contact info
+     * Modifies the User's contact information
+     * @param user User object that is to be modified
+     * @param newContactInfo new contact information
      */
     public void editContactInfo (User user, String newContactInfo) {
         Profile userProfile = user.getProfile();
@@ -120,7 +135,7 @@ public class UserManager {
      * The currentMatches attribute for each user is first empties and then the new matches are
      * added.
      *
-     * @param matches
+     * @param matches Map of users and their matches
      */
     public void modifyCurrentMatches(Map<String, List<Match>> matches) {
         // TODO: Add the previous current matches of each user to their match history
