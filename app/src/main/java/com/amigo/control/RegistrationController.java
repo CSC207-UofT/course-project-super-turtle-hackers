@@ -59,14 +59,24 @@ public class RegistrationController {
         return "register-courses";
     }
 
+    // @PostMapping("/register-courses")
+    // public String validateCourses(HttpServletRequest request, RedirectAttributes attributes,
+    //         @ModelAttribute("courseForm1") CourseForm form1, @ModelAttribute("courseForm2") CourseForm form2) {
+    //     // TODO: figure out why two objects don't work in form
+    //     // redirect a POST request to another POST request
+    //     request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
+    //     // add request parameter
+    //     // attributes.addAttribute("courseCode", form1.getCourseCode());
+    //     return "redirect:/data/addcourse";
+    // }
+
     @PostMapping("/register-courses")
-    public String validateCourses(HttpServletRequest request, RedirectAttributes attributes,
-            @ModelAttribute("courseForm1") CourseForm form1, @ModelAttribute("courseForm2") CourseForm form2) {
-        // TODO: figure out why two objects don't work in form
-        // redirect a POST request to another POST request
-        request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
-        // add request parameter
-        // attributes.addAttribute("courseCode", form1.getCourseCode());
-        return "redirect:/data/addcourse";
+    public String validateCourses() {
+        return "redirect:/register-interests";
+    }
+
+    @GetMapping("/register-interests")
+    public String showRegisterInterestPage() {
+        return "register-interests";
     }
 }
