@@ -1,4 +1,4 @@
-package com.amigo.form;
+package com.amigo.validate;
 
 import org.springframework.stereotype.Service;
 
