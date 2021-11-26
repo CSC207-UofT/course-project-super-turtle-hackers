@@ -3,6 +3,7 @@ package com.amigo.control;
 import javax.servlet.http.HttpServletRequest;
 
 import com.amigo.form.CourseForm;
+import com.amigo.form.InterestForm;
 import com.amigo.form.RegistrationForm;
 import com.amigo.form.RegistrationValidator;
 
@@ -76,7 +77,14 @@ public class RegistrationController {
     }
 
     @GetMapping("/register-interests")
-    public String showRegisterInterestPage() {
+    public String showRegisterInterestPage(Model model) {
+        model.addAttribute("interestForm", new InterestForm());
         return "register-interests";
+    }
+
+    @PostMapping("/register-interests")
+    public String validateInterests(Model model, @ModelAttribute("interestForm") InterestForm interestForm) {
+        System.out.println(interestForm.getHobbies());
+        return "redirect:/dashboard";
     }
 }
