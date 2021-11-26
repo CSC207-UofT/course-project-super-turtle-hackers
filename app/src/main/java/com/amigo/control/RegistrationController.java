@@ -5,12 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import com.amigo.form.CourseForm;
 import com.amigo.form.InterestForm;
 import com.amigo.form.RegistrationForm;
-import com.amigo.form.RegistrationValidator;
+import com.amigo.validate.RegistrationValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,12 +43,12 @@ public class RegistrationController {
      * @param form a Data Access Object representing the registration form
      */
     @PostMapping("/")
-    public String validateRegistration(Model model, @ModelAttribute("regForm") RegistrationForm form) {
-        boolean isValidRegistration = validator.validateRegistration();
+    public String validateRegistration(Model model, @ModelAttribute("regForm") RegistrationForm form, BindingResult result) {
+        validator.validate(form, result);
         
-        // this doesn't work yet
-        if (!isValidRegistration) {
-            model.addAttribute("errorMessage", "This means you failed.");
+        // TODO: display the error message accordingly
+        if (result.hasErrors()) {
+            model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
             return "index";
         }
         return "redirect:/register-courses";
