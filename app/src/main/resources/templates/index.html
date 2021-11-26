@@ -66,9 +66,8 @@
           <div class="w-form-done">
             <div>Thank you! Your submission has been received!</div>
           </div>
-          <div class="w-form-fail">
-            <div th:text="${errorMessage}">Oops! Something went wrong while submitting the form.</div>
-          </div>
+          <div th:if="${not #strings.isEmpty(errorMessage)}" th:text="${errorMessage}"
+            class="form-error">Oops! Something went wrong while submitting the form.</div>
         </div>
         <a href="/login" class="button-4 w-button">Sign in</a>
       </div>
