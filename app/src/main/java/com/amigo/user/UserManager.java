@@ -64,9 +64,11 @@ public class UserManager {
         String contact = userInfo[4];
         Profile p = profileFactory.createProfile(name, year, prog, courses, contact);
         User user = userFactory.createUser(p);
-        // TODO: not yet doing any checks of duplicates
-        users.put(user.getId(), user);
-        database.addUser(user);
+        // TODO: not yet doing any checks of duplicates -done
+        if (!(users.containsKey(user.getId()))) {
+            users.put(user.getId(), user);
+            database.addUser(user);
+        }
         return user.getId();
     }
 
@@ -139,6 +141,7 @@ public class UserManager {
      */
     public void modifyCurrentMatches(Map<String, List<Match>> matches) {
         // TODO: Add the previous current matches of each user to their match history
+
         for (var entry: matches.entrySet()) {
             User user = this.getUserById(entry.getKey());
             List<Match> currentMatchesUser = entry.getValue();
