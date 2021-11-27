@@ -44,17 +44,14 @@ public class Matcher {
 
             List<Match> potentialMatchesUser = potentialMatches.get(userID);
             // Sorts based on metric in descending order
-            potentialMatchesUser.sort(new Comparator<Match>() {
-                @Override
-                public int compare(Match m1, Match m2) {
-                    double val = (m1.getMetric() - m2.getMetric());
-                    if (val > 0) {
-                        return -1;
-                    } else if (val == 0) {
-                        return 0;
-                    } else {
-                        return 1;
-                    }
+            potentialMatchesUser.sort((m1, m2) -> {
+                double val = (m1.getMetric() - m2.getMetric());
+                if (val > 0) {
+                    return -1;
+                } else if (val == 0) {
+                    return 0;
+                } else {
+                    return 1;
                 }
             });
 
@@ -184,11 +181,11 @@ public class Matcher {
      */
     static boolean differ_by_one(String word1, String word2) {
         if(word1.length() == word2.length()) {
-            int mistake = (int) Math.ceil((double)(word1.length()/5)); // Allow only 20% error in typing
+            int mistake = (int) Math.ceil((double)word1.length()/5); // Allow only 20% error in typing
             for (int i = 0; i < word1.length(); i++) {
                 if (word1.charAt(i) != word2.charAt(i)) {
                     mistake--;
-                    if (mistake < 0) { // If there are more than two differences then return false
+                    if (mistake < 0) { // If there are more than two differences when the words are equal lengh then return false
                         return false;
                     }
                 }
@@ -200,7 +197,7 @@ public class Matcher {
         }
         return true;
     }
-
+    // Check if the words are alternates of each other if the additional letter is removed, at every index
     private static boolean check_added_character(String word1, String word2, boolean b) {
         if(word2.length() - word1.length() == 1){
             for (int i = 0; i < word2.length(); i++){
