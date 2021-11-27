@@ -119,9 +119,13 @@ public class Matcher {
 
     /**
      * Returns the metric representing the closeness of match between two users.
+     * +1 for same course
+     * +1 for same year of study
+     * +1 for same program of study
+     * -1 for year of study difference > 1
      */
     public double metric(User user1, User user2) {
-        // TODO: Improve metric to include more than just courses
+        // TODO: Improve metric to include more than just courses, should be done
         double temp_metric = 0;
         Profile profile1 = user1.getProfile();
         Profile profile2 = user2.getProfile();
@@ -179,57 +183,88 @@ public class Matcher {
      * Returns whether the two inputs differ by one letter
      */
     static boolean differ_by_one(String word1, String word2) {
-        if(word1.length() != word2.length()) {
-            return false;
-        }
-        int mistake = 1; // Allow only one difference
-        for(int i = 0; i < word1.length(); i++) {
-            if (word1.charAt(i) != word2.charAt(i)) {
-                mistake--;
-                if (mistake < 0) { // If there are more than two differences then return false
-                    return false;
+        if(word1.length() == word2.length()) {
+            int mistake = (int) Math.ceil((double)(word1.length()/5)); // Allow only 20% error in typing
+            for (int i = 0; i < word1.length(); i++) {
+                if (word1.charAt(i) != word2.charAt(i)) {
+                    mistake--;
+                    if (mistake < 0) { // If there are more than two differences then return false
+                        return false;
+                    }
                 }
             }
         }
+        else{
+            if (check_added_character(word2, word1, differ_by_one(word1, word2))) return true;
+            if (check_added_character(word1, word2, differ_by_one(word1, word2))) return true;
+        }
         return true;
     }
+
+    private static boolean check_added_character(String word1, String word2, boolean b) {
+        if(word2.length() - word1.length() == 1){
+            for (int i = 0; i < word2.length(); i++){
+                StringBuilder temp = new StringBuilder(word2);
+                temp.deleteCharAt(i);
+                word2 = temp.toString();
+                if (b) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * Returns whether there are two equivalent spellings for programs of study
      */
     static boolean alternative_spelling(String word1, String word2) {
-        if (word1.equals("cs") && word2.equals("computer science")){
+        if ((word1.equals("cs")||differ_by_one(word1, "cs")) && (word2.equals("computer science")||differ_by_one(word2, "computer science"))){
             return true;
         }
-        else if (word1.equals("computer science") && word2.equals("cs")){
+        else if ((word1.equals("computer science")||differ_by_one(word1, "computer science")) && (word2.equals("cs")||differ_by_one(word2, "cs"))){
             return true;
         }
-        else if (word1.equals("chem") && word2.equals("chemistry")){
+        else if ((word1.equals("chem")||differ_by_one(word1, "chem")) && (word2.equals("chemistry")||differ_by_one(word2, "chemistry"))){
             return true;
         }
-        else if (word1.equals("chemistry") && word2.equals("chem")){
+        else if ((word1.equals("chemistry")||differ_by_one(word1, "chemistry")) && (word2.equals("chem")||differ_by_one(word2, "chem"))){
             return true;
         }
-        else if (word1.equals("engsci") && word2.equals("engineering science")){
+        else if ((word1.equals("engsci")||differ_by_one(word1, "engsci")) && (word2.equals("engineering science")||differ_by_one(word2, "engineering science"))){
             return true;
         }
-        else if (word1.equals("engineering science") && word2.equals("engsci")){
+        else if ((word1.equals("engineering science")||differ_by_one(word1, "engineering science")) && (word2.equals("engsci")||differ_by_one(word2, "engsci"))){
             return true;
         }
-        else if (word1.equals("chemeng") && word2.equals("chemical engineering")){
+        else if ((word1.equals("chemeng")||differ_by_one(word1, "chemeng")) && (word2.equals("chemical engineering")||differ_by_one(word2, "chemical engineering"))){
             return true;
         }
-        else if (word1.equals("chemical engineering") && word2.equals("chemeng")){
+        else if ((word1.equals("mecheng")||differ_by_one(word1, "mecheng")) && (word2.equals("mechanical engineering")||differ_by_one(word2, "mechanical engineering"))){
             return true;
         }
-        else if (word1.equals("mecheng") && word2.equals("mechanical engineering")){
+        else if ((word1.equals("mechanical engineering")||differ_by_one(word1, "mechanical engineering")) && (word2.equals("mecheng")||differ_by_one(word2, "mecheng"))){
             return true;
         }
-        else if (word1.equals("mechanical engineering") && word2.equals("mecheng")){
+        else if ((word1.equals("cogsci")||differ_by_one(word1, "cogsci")) && (word2.equals("cognitive science")||differ_by_one(word2, "cognitive science"))){
             return true;
         }
-        else if (word1.equals("cogsci") && word2.equals("cognitive science")){
+        else if ((word1.equals("cognitive science")||differ_by_one(word1, "cognitive science")) && (word2.equals("cogsci")||differ_by_one(word2, "cogsci"))){
             return true;
         }
-        else return word1.equals("cognitive science") && word2.equals("cogsci");
+        else if ((word1.equals("IR")||differ_by_one(word1, "IR")) && (word2.equals("international relations")||differ_by_one(word2, "international relations"))){
+            return true;
+        }
+        else if ((word1.equals("international relations")||differ_by_one(word1, "international relations")) && (word2.equals("IR")||differ_by_one(word2, "IR"))){
+            return true;
+        }
+        else if ((word1.equals("international relations")||differ_by_one(word1, "international relations")) && (word2.equals("IR")||differ_by_one(word2, "IR"))){
+            return true;
+        }
+        else if ((word1.equals("math")||differ_by_one(word1, "math")) && (word2.equals("mathematics")||differ_by_one(word2, "mathematics"))){
+            return true;
+        }
+        else return (word1.equals("mathematics") || differ_by_one(word1, "mathematics")) && (word2.equals("math") || differ_by_one(word2, "math"));
     }
-}
+    }
+
