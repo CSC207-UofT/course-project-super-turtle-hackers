@@ -108,7 +108,6 @@ public class Matcher {
             for (int j = i + 1; j < numUsers; j++) {
                 user2 = users.get(j);
                 Match match = new Match(user1, user2, new Date(), metric(user1, user2));
-                // Only adds the match if the two users have common courses
                 if (match.getMetric() > 0){
                     potentialMatches.get(user1.getId()).add(match);
                     potentialMatches.get(user2.getId()).add(match);
