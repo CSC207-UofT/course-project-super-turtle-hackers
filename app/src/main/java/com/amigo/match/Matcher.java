@@ -1,12 +1,6 @@
 package com.amigo.match;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.amigo.user.User;
 import com.amigo.user.Profile;
@@ -129,6 +123,7 @@ public class Matcher {
      */
     public double metric(User user1, User user2) {
         // TODO: Improve metric to include more than just courses
+        double temp_metric = 0;
         Profile profile1 = user1.getProfile();
         Profile profile2 = user2.getProfile();
 
@@ -147,11 +142,95 @@ public class Matcher {
             courseCodes2.add(course.getCourseCode());
         }
 
-        HashSet<String> commonCourseCodes = new HashSet<>(courseCodes1);
+        // Take into account two profiles in the same year of study
+        int yearOfStudy1 = profile1.getYearOfStudy();
+        int yearOfStudy2 = profile2.getYearOfStudy();
+        if (yearOfStudy1 == yearOfStudy2){
+            temp_metric = 1;
+        }
+        // Difference in year of studies accounted for
+        if (Math.abs(yearOfStudy1 - yearOfStudy2) > 1){
+            temp_metric = -1;
+        }
+        double metric = temp_metric;
+        temp_metric = 0;
+
+        String ProgramOfStudy1 = profile1.getProgramOfStudy().toLowerCase();
+        String ProgramOfStudy2 = profile2.getProgramOfStudy().toLowerCase();
+        if (ProgramOfStudy1.equals(ProgramOfStudy2)){
+            temp_metric = 1;
+        }
+        // Check if there is a one letter typo in the spellings
+        else if (differ_by_one(ProgramOfStudy1, ProgramOfStudy2)){
+            temp_metric = 1;
+        }
+        // Handle any alternative spellings
+        else if (alternative_spelling(ProgramOfStudy1, ProgramOfStudy2)){
+            temp_metric = 1;
+        }
+        metric += temp_metric;
+
+            HashSet<String> commonCourseCodes = new HashSet<>(courseCodes1);
         commonCourseCodes.retainAll(courseCodes2);  // takes the intersection
-        double metric = ((double) commonCourseCodes.size()) / Math.min(courses1.size(), courses2.size());
+        metric = metric + ((double) commonCourseCodes.size()) / Math.min(courses1.size(), courses2.size());
 
         return metric;
     }
-
+    /**
+     * Returns whether the two inputs differ by one letter
+     */
+    static boolean differ_by_one(String word1, String word2) {
+        if(word1.length() != word2.length()) {
+            return false;
+        }
+        int mistake = 1; // Allow only one difference
+        for(int i = 0; i < word1.length(); i++) {
+            if (word1.charAt(i) != word2.charAt(i)) {
+                mistake--;
+                if (mistake < 0) { // If there are more than two differences then return false
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    /**
+     * Returns whether there are two equivalent spellings for programs of study
+     */
+    static boolean alternative_spelling(String word1, String word2) {
+        if (word1.equals("cs") && word2.equals("computer science")){
+            return true;
+        }
+        else if (word1.equals("computer science") && word2.equals("cs")){
+            return true;
+        }
+        else if (word1.equals("chem") && word2.equals("chemistry")){
+            return true;
+        }
+        else if (word1.equals("chemistry") && word2.equals("chem")){
+            return true;
+        }
+        else if (word1.equals("engsci") && word2.equals("engineering science")){
+            return true;
+        }
+        else if (word1.equals("engineering science") && word2.equals("engsci")){
+            return true;
+        }
+        else if (word1.equals("chemeng") && word2.equals("chemical engineering")){
+            return true;
+        }
+        else if (word1.equals("chemical engineering") && word2.equals("chemeng")){
+            return true;
+        }
+        else if (word1.equals("mecheng") && word2.equals("mechanical engineering")){
+            return true;
+        }
+        else if (word1.equals("mechanical engineering") && word2.equals("mecheng")){
+            return true;
+        }
+        else if (word1.equals("cogsci") && word2.equals("cognitive science")){
+            return true;
+        }
+        else return word1.equals("cognitive science") && word2.equals("cogsci");
+    }
 }
