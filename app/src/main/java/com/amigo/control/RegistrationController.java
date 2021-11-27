@@ -1,10 +1,12 @@
 package com.amigo.control;
 
+import javax.naming.Binding;
 import javax.servlet.http.HttpServletRequest;
 
 import com.amigo.form.CourseForm;
 import com.amigo.form.InterestForm;
 import com.amigo.form.RegistrationForm;
+import com.amigo.validate.CourseValidator;
 import com.amigo.validate.RegistrationValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class RegistrationController {
      */
     @Autowired
     RegistrationValidator validator;
+
+    @Autowired
+    CourseValidator courseValidator;
     
     @GetMapping("/")
     public String showWelcomePage(Model model) {
@@ -46,7 +51,6 @@ public class RegistrationController {
     public String validateRegistration(Model model, @ModelAttribute("regForm") RegistrationForm form, BindingResult result) {
         validator.validate(form, result);
         
-        // TODO: display the error message accordingly
         if (result.hasErrors()) {
             model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
             return "index";
@@ -73,7 +77,14 @@ public class RegistrationController {
     // }
 
     @PostMapping("/register-courses")
-    public String validateCourses() {
+    public String validateCourses(Model model, @ModelAttribute("courseForm1") CourseForm form, BindingResult result) {
+        courseValidator.validate(form, result);
+
+        if (result.hasErrors()) {
+            model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
+            return "register-courses";
+        }
+        
         return "redirect:/register-interests";
     }
 

@@ -28,7 +28,7 @@ public class RegistrationValidator implements Validator {
     public void validate(Object target, Errors errors) {
         RegistrationForm form = (RegistrationForm) target;
         if (!form.getPassword().equals(form.getConfirmPassword())) {
-            errors.rejectValue("confirmPassword", errorStrings.getPswdNotMatch());
+            errors.rejectValue("confirmPassword", errorStrings.PSWD_NOT_MATCH);
         }
     }
 }
