@@ -6,7 +6,7 @@ package com.amigo.form;
  * <p> The value of each instance variable is populated by Thymeleaf, corresponding to the
  * credentials that the user inputs into the login form.
  */
-public class Credentials {
+public class LoginForm {
     private String username;
     private String password;
 
