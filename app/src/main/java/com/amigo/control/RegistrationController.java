@@ -77,15 +77,18 @@ public class RegistrationController {
     // }
 
     @PostMapping("/register-courses")
-    public String validateCourses(Model model, @ModelAttribute("courseForm1") CourseForm form, BindingResult result) {
-        courseValidator.validate(form, result);
+    public String validateCourses(Model model, @ModelAttribute("courseForm1") CourseForm form,
+            @ModelAttribute("courseForm2") CourseForm form2, BindingResult result) {
+        // courseValidator.validate(form, result);
+        // courseValidator.validate(form2, result);
 
-        if (result.hasErrors()) {
-            model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
-            return "register-courses";
-        }
-        
-        return "redirect:/register-interests";
+        // if (result.hasErrors()) {
+        //     model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
+        //     return "register-courses";
+        // }
+
+        return "register-courses";
+        // return "redirect:/register-interests";
     }
 
     @GetMapping("/register-interests")
