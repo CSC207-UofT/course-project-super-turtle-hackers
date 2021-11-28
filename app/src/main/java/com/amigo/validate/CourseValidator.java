@@ -36,15 +36,16 @@ public class CourseValidator implements Validator {
      */
     @Override
     public void validate(Object target, Errors errors) {
+        // TODO: convert into nested validators to correctly identify fields
         CourseForm form = (CourseForm) target;
         if (!COURSE_PATTERN.matcher(form.getCourseCode()).matches()) {
-            errors.rejectValue("courseCode", errorStrings.COURSE_INFO_FORMAT);
+            errors.reject(errorStrings.COURSE_INFO_FORMAT);
         }
         if (!LEC_PATTERN.matcher(form.getLectureCode()).matches()) {
-            errors.rejectValue("lectureCode", errorStrings.COURSE_INFO_FORMAT);
+            errors.reject(errorStrings.COURSE_INFO_FORMAT);
         }
         if (!TUT_PATTERN.matcher(form.getTutorialCode()).matches()) {
-            errors.rejectValue("tutorialCode", errorStrings.COURSE_INFO_FORMAT);
+            errors.reject(errorStrings.COURSE_INFO_FORMAT);
         }
     }
     

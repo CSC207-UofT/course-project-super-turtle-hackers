@@ -42,42 +42,47 @@
         <a href="/" class="w-inline-block"><img src="images/arrow-left.png" loading="lazy" width="52" alt=""
             class="image-5"></a>
         <div class="w-form">
-          <form id="email-form" name="email-form"
-            th:action="@{/register-courses}" method="post">
+          <form id="email-form" name="email-form" th:action="@{/register-courses}" method="post" th:object="${courseForms}">
             <label for="name" class="field-label-4">Enter your current course details</label>
-            <div class="text-block-2">Course code</div>
-            <input type="text" maxlength="256"
-              placeholder="CSC207" required=""
-              th:field="${courseForm1.courseCode}"
-            >
-            <div class="text-block-2-copy">
-              Tutorial Section                                    Lecture Section                      </div>
-            <input
-              type="text" class="text-field-2-copy w-input" maxlength="256" name="Tutorial-Section"
-              placeholder="TUT0101" id="Tutorial-Section"
-              th:field="${courseForm1.tutorialCode}"
-            >
-            <input type="text"
-              class="text-field-2-copy w-input" maxlength="256" name="Course-code-3"
-              placeholder="LEC0101" required=""
-              th:field="${courseForm1.lectureCode}">
-            <div class="text-block-2">Course code</div>
-            <input type="text" class="text-field-2 w-input" maxlength="256"
-              name="Course-code" placeholder="ECO200" id="Course-code-5" required=""
-              th:field="${courseForm2.courseCode}"
-            >
-            <div class="text-block-2-copy">Tutorial Section 
-                                                   Lecture Section                      </div>
-            <input type="text"
-              class="text-field-2-copy w-input" maxlength="256" name="Tutorial-Section"
-              placeholder="TUT0101" id="Tutorial-Section-2"
-              th:field="${courseForm2.lectureCode}"
-            >
-            <input type="text" class="text-field-2-copy w-input"
-              maxlength="256" name="Course-code-2" placeholder="LEC0101" id="Course-code-2"
-              required=""
-              th:field="${courseForm2.tutorialCode}"
-            >
+            <!-- iteration feature of Thymeleaf, double underscore for preprocessing -->
+            <div th:each="courseForm, iterStat : *{courseList}">
+              <div class="text-block-2">Course code</div>
+              <input type="text" maxlength="256" class="text-field-2-copy w-input" 
+                placeholder="CSC207" required=""
+                th:field="*{courseList[__${iterStat.index}__].courseCode}"
+              >
+              <div class="text-block-2-copy">
+                Tutorial Section                                    Lecture Section                      </div>
+              <input
+                type="text" class="text-field-2-copy w-input" maxlength="256"
+                placeholder="TUT0101"
+                th:field="*{courseList[__${iterStat.index}__].tutorialCode}"
+              >
+              <input type="text"
+                class="text-field-2-copy w-input" maxlength="256"
+                placeholder="LEC0101" required=""
+                th:field="*{courseList[__${iterStat.index}__].lectureCode}"
+              >
+            </div>
+            <!-- <div th:object="${courseForm2}">
+              <div class="text-block-2">Course code</div>
+              <input type="text" class="text-field-2 w-input" maxlength="256"
+                placeholder="ECO200" required=""
+                th:field="*{courseCode}"
+              >
+              <div class="text-block-2-copy">
+                Tutorial Section                                    Lecture Section                      </div>
+              <input type="text"
+                class="text-field-2-copy w-input" maxlength="256"
+                placeholder="TUT0101"
+                th:field="*{tutorialCode}"
+              >
+              <input type="text" class="text-field-2-copy w-input"
+                maxlength="256" placeholder="LEC0101"
+                required=""
+                th:field="*{lectureCode}"
+              >
+            </div> -->
             <div class="text-block-5">Is an Amigo taking the same class as you?<br>Ask them for their amigo id and get
               matched!</div>
             <input type="text" class="text-field-3 w-input" maxlength="256" name="Have-an-Amigo-ID"

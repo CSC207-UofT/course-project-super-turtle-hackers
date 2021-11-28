@@ -4,6 +4,7 @@ import javax.naming.Binding;
 import javax.servlet.http.HttpServletRequest;
 
 import com.amigo.form.CourseForm;
+import com.amigo.form.CourseFormList;
 import com.amigo.form.InterestForm;
 import com.amigo.form.RegistrationForm;
 import com.amigo.validate.CourseValidator;
@@ -60,35 +61,23 @@ public class RegistrationController {
 
     @GetMapping("/register-courses")
     public String showRegisterCoursePage(Model model) {
-        model.addAttribute("courseForm1", new CourseForm());
-        model.addAttribute("courseForm2", new CourseForm());
+        model.addAttribute("courseForms", new CourseFormList());
         return "register-courses";
     }
 
-    // @PostMapping("/register-courses")
-    // public String validateCourses(HttpServletRequest request, RedirectAttributes attributes,
-    //         @ModelAttribute("courseForm1") CourseForm form1, @ModelAttribute("courseForm2") CourseForm form2) {
-    //     // TODO: figure out why two objects don't work in form
-    //     // redirect a POST request to another POST request
-    //     request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
-    //     // add request parameter
-    //     // attributes.addAttribute("courseCode", form1.getCourseCode());
-    //     return "redirect:/data/addcourse";
-    // }
-
     @PostMapping("/register-courses")
-    public String validateCourses(Model model, @ModelAttribute("courseForm1") CourseForm form,
-            @ModelAttribute("courseForm2") CourseForm form2, BindingResult result) {
-        // courseValidator.validate(form, result);
-        // courseValidator.validate(form2, result);
+    public String validateCourses(Model model, @ModelAttribute CourseFormList courseForms, BindingResult result) {
+        for (CourseForm form : courseForms.getCourseList()) {
+            courseValidator.validate(form, result);
+        }
 
-        // if (result.hasErrors()) {
-        //     model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
-        //     return "register-courses";
-        // }
+        if (result.hasErrors()) {
+            model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
+            model.addAttribute("courseForms", new CourseFormList());
+            return "register-courses";
+        }
 
-        return "register-courses";
-        // return "redirect:/register-interests";
+        return "redirect:/register-interests";
     }
 
     @GetMapping("/register-interests")
