@@ -32,6 +32,7 @@ public class Matcher {
         }
 
         int minNumberMatches = 2;
+        int maxNumberMatches = 5;
         // A user could have less matches if there are no available matches
 
         for (User user: users) {

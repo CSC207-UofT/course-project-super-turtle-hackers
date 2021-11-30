@@ -140,7 +140,7 @@ public class UserManager {
      * @param matches Map of users and their matches
      */
     public void modifyCurrentMatches(Map<String, List<Match>> matches) {
-        // TODO: Add the previous current matches of each user to their match history
+        // TODO: Add the previous current matches of each user to their match history-what needs to be added?
 
         for (var entry: matches.entrySet()) {
             User user = this.getUserById(entry.getKey());

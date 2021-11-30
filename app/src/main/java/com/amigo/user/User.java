@@ -13,14 +13,15 @@ import com.amigo.match.Match;
  */
 @Entity
 public class User {
-    // TODO: Add a flag for report-made binary int
-    // TODO: Add a checkbox for Wildcard Matching
+    // TODO: Add a flag for report-made binary int-created
+    // TODO: Add a checkbox for Wildcard Matching-created
     private Profile profile;
     @Id
     // @Column(name = "id")
     private String id;
     private List<Match> currentMatches;
     private int flag;
+    private boolean checkbox;
 //    private matchHistory matchHistory; not used for phase 0
 
     /**
@@ -59,6 +60,7 @@ public class User {
     public int getFlag(){
         return flag;
     }
+    public boolean getCheckbox(){return checkbox;}
     /**
      * Returns True if the id of a given user is the same as the current user
      */
@@ -73,9 +75,12 @@ public class User {
     public void setCurrentMatches(List<Match> currentMatches) {
         this.currentMatches = currentMatches;
     }
-    public void flag(){
+    public void setFlag(){
         this.flag = 1;
     }
+    public void removeFlag(){this.flag = 0;}
+    public void setCheckbox(){this.checkbox = true;}
+    public void removeCheckbox(){this.checkbox = false;}
     /**
      * Returns the name of the matched user of the current user.
      */
