@@ -192,8 +192,8 @@ public class Matcher {
             }
         }
         else{
-            if (check_added_character(word2, word1, differ_by_one(word1, word2))) return true;
-            if (check_added_character(word1, word2, differ_by_one(word1, word2))) return true;
+            if (check_added_character(word2, word1, !differ_by_one(word1, word2))) return true;
+            if (check_added_character(word1, word2, !differ_by_one(word1, word2))) return true;
         }
         return true;
     }
