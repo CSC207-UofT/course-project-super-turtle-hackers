@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import com.amigo.course.Course;
 
 /**
- * A profile containing a name, year of study, program of study, courses and contact info.
+ * A profile containing a name, year of study, program of study, courses, contact info and interests.
  */
 @Entity
 public class Profile {
@@ -16,6 +16,10 @@ public class Profile {
     private String programOfStudy;
     private HashSet<Course> courses;
     private String contactInfo;
+    private String recInterest;
+    private String musInterest;
+    private String sportInterest;
+    private String hobbies;
 
     /**
      * Creates a profile using the default constructor
@@ -23,15 +27,19 @@ public class Profile {
     public Profile() {}
     
     /**
-     * Creates a profile containing a name, year of study, program of study, courses and contact info.
+     * Creates a profile containing a name, year of study, program of study, courses, contact info and interests.
      */
     public Profile(String name, int yearOfStudy, String programOfStudy, HashSet<Course> courses,
-                   String contactInfo) {
+                   String contactInfo, String hobbies, String sportInterest, String musInterest, String recInterest) {
         this.name = name;
         this.yearOfStudy = yearOfStudy;
         this.programOfStudy = programOfStudy;
         this.courses = courses;
         this.contactInfo = contactInfo;
+        this.hobbies = hobbies;
+        this.sportInterest = sportInterest;
+        this.musInterest = musInterest;
+        this.recInterest = recInterest;
     }
 
     /**
@@ -106,6 +114,62 @@ public class Profile {
      */
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    /**
+     * Returns the profile's hobbies
+     */
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    /**
+     * Creates a profile's hobbies
+     */
+    public void setHobbies(String hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    /**
+     * Returns the profile's music interests
+     */
+    public String getMusInterest() {
+        return musInterest;
+    }
+
+    /**
+     * Creates a profile's music interests
+     */
+    public void setMusInterest(String musInterest) {
+        this.musInterest = musInterest;
+    }
+
+    /**
+     * Returns the profile's recreational interests
+     */
+    public String getRecInterest() {
+        return recInterest;
+    }
+
+    /**
+     * Creates a profile's recreational interests
+     */
+    public void setRecInterest(String recInterest) {
+        this.recInterest = recInterest;
+    }
+
+    /**
+     * Returns the profile's sport interests
+     */
+    public String getSportInterest() {
+        return sportInterest;
+    }
+
+    /**
+     * Creates a profile's sport interests
+     */
+    public void setSportInterest(String sportInterest) {
+        this.sportInterest = sportInterest;
     }
 
     /**
