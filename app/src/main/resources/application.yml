@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+error:
+  pswdNotMatch: The passwords don't match.
+  courseInfoFormat: Incorrect format for one or more course info fields.
