@@ -10,7 +10,6 @@ public class CourseForm {
         return courseCode;
     }
     public void setCourseCode(String courseCode) {
-        System.out.println(courseCode);
         this.courseCode = courseCode;
     }
     public String getLectureCode() {
