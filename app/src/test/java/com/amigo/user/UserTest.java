@@ -24,18 +24,20 @@ public class UserTest {
         HashSet<Course> profile2courses = new HashSet<Course>(Arrays.asList(course2, course3));
         HashSet<Course> profile3courses = new HashSet<Course>(Collections.singletonList(course4));
         HashSet<Course> profile4courses = new HashSet<Course>(Collections.singletonList(course1));
+        //hobbies, music, sport, rec
         Profile profile1 = new Profile("Dien", 2, "Computer Science",
-                profile1courses, "dien@mail.utoronto.ca");
+                profile1courses, "dien@mail.utoronto.ca", "Art", "Volleyball",
+                "Justin Bieber", "Sleep");
         Profile profile2 = new Profile("Akshat", 2, "Computer Science",
-                profile2courses, "akshat@mail.utoronto.ca");
+                profile2courses, "akshat@mail.utoronto.ca", "Hackathons", "Rock Climbing", "Greenday", "Jazz");
         Profile profile3 = new Profile("Tony", 1, "Women and Gender Studies",
-                profile3courses, "iloveponies@gmail.com");
+                profile3courses, "iloveponies@gmail.com", "", "Skating", "", "");
         Profile profile4 = new Profile("Sriracha", 3, "Pathobiology",
-                profile4courses, "hotsauceisthesauce@yahoo.co.in");
-        User user1 = new User(profile1, "dien001");
-        User user2 = new User(profile2, "aksh002");
-        User user3 = new User(profile3, "tony003");
-        User user4 = new User(profile4, "srir004");
+                profile4courses, "hotsauceisthesauce@yahoo.co.in", "", "", "", "");
+        User user1 = new User(profile1, "dien001", "dien@mail.utoronto.ca", "password1");
+        User user2 = new User(profile2, "aksh002", "akshat@mail.utoronto.ca", "rockclimbingislove");
+        User user3 = new User(profile3, "tony003", "iloveponies@gmail.com", "ponieslove");
+        User user4 = new User(profile4, "srir004", "hotsauceisthesauce@yahoo.co.in", "hotsauceislove");
 
         assertEquals(user1.getId(), "dien001");
         assertEquals(user2.getId(), "aksh002");
