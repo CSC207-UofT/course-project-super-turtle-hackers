@@ -3,6 +3,9 @@ package com.amigo.form;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Form backing data object for register-courses.
+ */
 public class CourseFormList {
     
     private List<CourseForm> courseList;
