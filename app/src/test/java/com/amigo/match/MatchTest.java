@@ -29,11 +29,12 @@ public class MatchTest {
         HashSet<Course> profile1courses = new HashSet<Course>(Arrays.asList(course1, course2));
         HashSet<Course> profile2courses = new HashSet<Course>(Arrays.asList(course2, course3));
         Profile profile1 = new Profile("Dien", 2, "Computer Science",
-                profile1courses, "dien@mail.utoronto.ca");
+                profile1courses, "dien@mail.utoronto.ca", "Art", "Volleyball",
+                "Justin Bieber", "Sleep");
         Profile profile2 = new Profile("Akshat", 2, "Computer Science",
-                profile2courses, "akshat@mail.utoronto.ca");
-        User user1 = new User(profile1, "dien001");
-        User user2 = new User(profile2, "aksh002");
+                profile2courses, "akshat@mail.utoronto.ca", "Hackathons", "Rock Climbing", "Greenday", "Jazz");
+        User user1 = new User(profile1, "dien001", "dien@mail.utoronto.ca", "password1");
+        User user2 = new User(profile2, "aksh002", "akshat@mail.utoronto.ca", "rockclimbingislove");
         Match match1 = new Match(user1, user2, new Date(), 1.0/3.0);
         HashSet<Course> user1courses = new HashSet<>(match1.getUser1().getProfile().getCourses());
         HashSet<Course> user2courses = new HashSet<>(match1.getUser2().getProfile().getCourses());

@@ -19,7 +19,7 @@ public class Matcher {
      * {@code users}. Below is the pseudocode for the matching algorithm.
      *
      * <pre>
-     * for each user in UserDatabase
+     * for each user in database
      *   if each user >= 2 matches:
      *       skip
      *   else:
