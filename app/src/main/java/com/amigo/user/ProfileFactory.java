@@ -5,7 +5,7 @@ import com.amigo.course.Course;
 
 import java.util.HashSet;
 
-public class ProfileFactory{
+public class ProfileFactory {
 
     /**
      * Constructor for ProfileFactory
