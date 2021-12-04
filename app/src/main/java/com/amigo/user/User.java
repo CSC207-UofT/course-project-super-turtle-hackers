@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import com.amigo.match.Match;
 
 /**
- * A user containing an id, a profile and a list of current matches.
+ * A user containing an id, an email, a password, a profile and a list of current matches.
  */
 @Entity
 public class User {
@@ -19,6 +19,9 @@ public class User {
     @Id
     // @Column(name = "id")
     private String id;
+    private String email;
+    private String password;
+
     private List<Match> currentMatches;
 //    private matchHistory matchHistory; not used for phase 0
 
@@ -28,11 +31,13 @@ public class User {
     public User() {}
 
     /**
-     * Creates a user containing an id, a profile and an empty list of current matches.
+     * Creates a user containing an id, an email, a password, a profile and an empty list of current matches.
      */
-    public User(Profile profile, String id) {
+    public User(Profile profile, String id, String email, String password) {
         this.profile = profile;
         this.id = id;
+        this.email = email;
+        this.password = password;
         this.currentMatches = new ArrayList<Match>();
     }
 
@@ -48,6 +53,21 @@ public class User {
      */
     public String getId() {
         return id;
+    }
+
+
+    /**
+     * Returns a user's email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Returns a user's password
+     */
+    public String getPassword() {
+        return password;
     }
 
     /**
