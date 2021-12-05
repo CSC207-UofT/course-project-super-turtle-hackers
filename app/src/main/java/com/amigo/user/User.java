@@ -118,4 +118,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /**
+     * Returns whether the user object has been properly instantiated and has its
+     * attributes set.
+     */
+    public boolean isValid() {
+        return profile != null;
+    }
 }
