@@ -1,26 +1,20 @@
 package com.amigo.control;
 
-import javax.naming.Binding;
-import javax.servlet.http.HttpServletRequest;
-
 import com.amigo.form.CourseForm;
 import com.amigo.form.CourseFormList;
 import com.amigo.form.InterestForm;
 import com.amigo.form.RegistrationForm;
+import com.amigo.user.UserBuilder;
 import com.amigo.validate.CourseValidator;
 import com.amigo.validate.RegistrationValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Controller for account creation.
@@ -36,6 +30,9 @@ public class RegistrationController {
 
     @Autowired
     CourseValidator courseValidator;
+
+    @Autowired
+    UserBuilder userBuilder;
     
     @GetMapping("/")
     public String showWelcomePage(Model model) {
@@ -56,6 +53,7 @@ public class RegistrationController {
             model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
             return "index";
         }
+        userBuilder.populate(form);
         return "redirect:/register-courses";
     }
 
@@ -76,7 +74,8 @@ public class RegistrationController {
             model.addAttribute("courseForms", new CourseFormList());
             return "register-courses";
         }
-
+        
+        userBuilder.populate(courseForms);
         return "redirect:/register-interests";
     }
 
@@ -88,7 +87,8 @@ public class RegistrationController {
 
     @PostMapping("/register-interests")
     public String validateInterests(Model model, @ModelAttribute("interestForm") InterestForm interestForm) {
-        System.out.println(interestForm.getHobbies());
+        userBuilder.populate(interestForm);
+        model.addAttribute("user", userBuilder.createUser());
         return "redirect:/dashboard";
     }
 }
