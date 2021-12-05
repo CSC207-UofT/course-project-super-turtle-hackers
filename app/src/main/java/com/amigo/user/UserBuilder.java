@@ -58,6 +58,8 @@ public class UserBuilder {
 
     public User createUser() {
         user.setProfile(this.profile);
+        String id = this.profile.getName().split(" ")[0].toLowerCase() + (int) (1000 * Math.random() + 1);
+        user.setId(id);
         User u = this.user;
         reset();
         return u; 
