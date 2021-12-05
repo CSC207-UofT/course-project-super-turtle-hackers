@@ -182,7 +182,8 @@ public class Matcher {
     }
 
     /**
-     * Returns whether the two inputs differ by one letter
+     * Returns whether the two inputs differ by only one letter, whether an additional letter or a replacement of a
+     * letter
      */
 
     static boolean differ_by_one(String word1, String word2) {
@@ -191,26 +192,26 @@ public class Matcher {
             for (int i = 0; i < word1.length(); i++) {
                 if (word1.charAt(i) != word2.charAt(i)) {
                     mistake--;
-                    if (mistake < 0) { // If there are more than two differences when the words are equal lengh then return false
+                    if (mistake < 0) { // If there are more than two differences when the words are equal length then return false
                         return false;
                     }
                 }
             }
         }
         else{
-            if (check_added_character(word2, word1, !differ_by_one(word1, word2))) return true;
-            if (check_added_character(word1, word2, !differ_by_one(word1, word2))) return true;
+            if (check_added_character(word2, word1)) return true;
+            if (check_added_character(word1, word2)) return true;
         }
         return true;
     }
     // Check if the words are alternates of each other if the additional letter is removed, at every index
-    private static boolean check_added_character(String word1, String word2, boolean b) {
+    private static boolean check_added_character(String word1, String word2) {
         if(word2.length() - word1.length() == 1){
             for (int i = 0; i < word2.length(); i++){
                 StringBuilder temp = new StringBuilder(word2);
                 temp.deleteCharAt(i);
                 word2 = temp.toString();
-                if (b) {
+                if (differ_by_one(word1, word2)){
                     return true;
                 }
             }

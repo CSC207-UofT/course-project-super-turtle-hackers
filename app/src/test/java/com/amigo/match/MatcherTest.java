@@ -63,20 +63,20 @@ public class MatcherTest {
 
         Map<String, List<Match>> matchingResults = matcher.match(listOfUsers);
 
-        assertEquals(3, matchingResults.get("dien001").size());
-        assertEquals(2, matchingResults.get("aksh002").size());
-        assertEquals(0, matchingResults.get("tony003").size());
-        assertEquals(2, matchingResults.get("srir004").size());
+        assertEquals(4, matchingResults.get("dien001").size());
+        assertEquals(3, matchingResults.get("aksh002").size());
+        assertEquals(2, matchingResults.get("tony003").size());
+        assertEquals(3, matchingResults.get("srir004").size());
         assertEquals(2, matchingResults.get("larr005").size());
-        assertEquals(3, matchingResults.get("joee006").size());
-        assertEquals(4, matchingResults.get("bobb007").size());
+        assertEquals(2, matchingResults.get("joee006").size());
+        assertEquals(2, matchingResults.get("bobb007").size());
 
-        assertEquals(3, matcher.metric(user1, user2), 0.1);
-        assertEquals(0, matcher.metric(user2, user3),0.1);
-        assertEquals(-1, matcher.metric(user3, user5),0.1);
+        assertEquals(2.5, matcher.metric(user1, user2), 0.1);
+        assertEquals(1, matcher.metric(user2, user3),0.1);
+        assertEquals(0, matcher.metric(user3, user5),0.1);
         assertEquals(1, matcher.metric(user5, user6),0.1);
         assertEquals(1, matcher.metric(user6, user7),0.1);
-        assertEquals(1, matcher.metric(user5, user7),0.1);
+        assertEquals(0, matcher.metric(user5, user7),0.1);
 
     }
 }
