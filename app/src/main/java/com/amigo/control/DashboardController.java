@@ -19,9 +19,9 @@ public class DashboardController {
     @GetMapping("/dashboard")
     public ModelAndView showDashboard(@ModelAttribute User user) {
         if (!user.isValid() && !presenter.hasUser()) {
-            return new ModelAndView("404");
+            return new ModelAndView("error-page");
         }
-        if (user != null) {
+        if (user.isValid()) {
             presenter.setUser(user);
         }
         ModelAndView mav = new ModelAndView("dashboard");
@@ -47,5 +47,10 @@ public class DashboardController {
             p.populate(mav.getModel());
         }
         return mav;
+    }
+
+    @GetMapping("/*") 
+    public String showError() {
+        return "error-page";
     }
 }
