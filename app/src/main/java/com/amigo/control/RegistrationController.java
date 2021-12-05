@@ -59,7 +59,7 @@ public class RegistrationController {
             return "index";
         }
         userBuilder.populate(form);
-        return "redirect:/register-interests";
+        return "redirect:/register-courses";
     }
 
     @GetMapping("/register-courses")

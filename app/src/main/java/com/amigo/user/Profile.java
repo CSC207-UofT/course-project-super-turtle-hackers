@@ -104,6 +104,10 @@ public class Profile {
         return coursesStringList;
     }
 
+    public String getCoursesAsString() {
+        return getCoursesList().toString();
+    }
+
     /**
      * Returns the profile's contact info
      */
