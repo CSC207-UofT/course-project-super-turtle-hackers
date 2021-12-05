@@ -1,5 +1,7 @@
 package com.amigo.control;
 
+import com.amigo.course.Course;
+import com.amigo.course.CourseRepository;
 import com.amigo.form.CourseForm;
 import com.amigo.form.CourseFormList;
 import com.amigo.form.InterestForm;
@@ -38,6 +40,9 @@ public class RegistrationController {
 
     @Autowired
     UserBuilder userBuilder;
+
+    @Autowired
+    CourseRepository courseRepository;
     
     @GetMapping({"/", "/index"})
     public String showWelcomePage(Model model) {
@@ -79,7 +84,12 @@ public class RegistrationController {
             model.addAttribute("courseForms", new CourseFormList());
             return "register-courses";
         }
-        
+        else {
+            for (CourseForm form : courseForms.getCourseList()) {
+                courseRepository.save(new Course(form.getCourseCode(), form.getLectureCode(), form.getTutorialCode()));
+            }
+        }
+
         userBuilder.populate(courseForms);
         return "redirect:/register-interests";
     }
