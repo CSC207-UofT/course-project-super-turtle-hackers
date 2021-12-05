@@ -16,6 +16,14 @@ public class UserPresenter {
     private User user;
 
 
+    /**
+     * Returns whether there is currently a {@code User} object associated with this
+     * presenter.
+     */
+    public boolean hasUser() {
+        return user != null;
+    }
+    
     public void setUser(User user) {
         this.user = user;
     }
