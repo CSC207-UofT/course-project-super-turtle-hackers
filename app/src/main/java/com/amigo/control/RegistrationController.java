@@ -39,7 +39,7 @@ public class RegistrationController {
     @Autowired
     UserBuilder userBuilder;
     
-    @GetMapping("/")
+    @GetMapping({"/", "/index"})
     public String showWelcomePage(Model model) {
         model.addAttribute("regForm", new RegistrationForm());
         return "index";
@@ -50,7 +50,7 @@ public class RegistrationController {
      * 
      * @param form a Data Access Object representing the registration form
      */
-    @PostMapping("/")
+    @PostMapping({"/", "/index"})
     public String validateRegistration(Model model, @ModelAttribute("regForm") RegistrationForm form, BindingResult result) {
         validator.validate(form, result);
         
