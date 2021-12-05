@@ -78,4 +78,5 @@ We used the following github features:
   - We also used pull requests to highlight commits that used a design pattern or refactoring. For example,
       - We modified UserManager and introduced User, Profile and CourseSet Factory.
       - We also added documentation for most of phase 0 code.
+Refactoring/Code Organization part
 
