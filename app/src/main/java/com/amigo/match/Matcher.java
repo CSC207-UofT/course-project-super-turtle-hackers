@@ -28,8 +28,9 @@ public class Matcher {
      * </pre>
      */
     public Map<String, List<Match>> match(List<User> users) {
+        int maxNumberMatches = 4;
         // Creates a map of potential matches
-        Map<String, List<Match>> potentialMatches = this.matchPotential(users);
+        Map<String, List<Match>> userTopMatches = this.getTopMatches(users, maxNumberMatches);
 
         // Initializes the final map of matches
         Map<String, List<Match>> matches = new HashMap<>();
@@ -40,6 +41,7 @@ public class Matcher {
         int minNumberMatches = 2;
         // A user could have less matches if there are no available matches
 
+
         for (User user: users) {
             String userID = user.getId();
             List<Match> matchesUser = matches.get(userID);
@@ -48,25 +50,11 @@ public class Matcher {
                 continue;
             }
 
-            List<Match> potentialMatchesUser = potentialMatches.get(userID);
-            // Sorts based on metric in descending order
-            potentialMatchesUser.sort(new Comparator<Match>() {
-                @Override
-                public int compare(Match m1, Match m2) {
-                    double val = (m1.getMetric() - m2.getMetric());
-                    if (val > 0) {
-                        return -1;
-                    } else if (val == 0) {
-                        return 0;
-                    } else {
-                        return 1;
-                    }
-                }
-            });
+            List<Match> topMatchesUser = userTopMatches.get(userID);
 
             int i = 0;
-            while (matchesUser.size() < minNumberMatches && i < potentialMatchesUser.size()) {
-                Match potentialMatch = potentialMatchesUser.get(i);
+            while (i < topMatchesUser.size()) {
+                Match potentialMatch = topMatchesUser.get(i);
                 // Checks whether potentialMatch is already in matches
                 boolean alreadyInserted = false;
                 for (Match match: matchesUser) {
@@ -77,13 +65,19 @@ public class Matcher {
                 }
                 if (!alreadyInserted) {
                     List<Match> otherUserMatches;
+                    User otherUser;
                     if (user.equals(potentialMatch.getUser1())) {
+                        otherUser = potentialMatch.getUser2();
                         otherUserMatches = matches.get(potentialMatch.getUser2().getId());
                     } else {
+                        otherUser = potentialMatch.getUser1();
                         otherUserMatches = matches.get(potentialMatch.getUser1().getId());
                     }
-                    matchesUser.add(potentialMatch);
-                    otherUserMatches.add(potentialMatch);
+                    List<Match> otherUserTopMatches = userTopMatches.get(otherUser.getId());
+                    if (otherUserTopMatches.contains(potentialMatch) && otherUserMatches.size() < 4) {
+                        matchesUser.add(potentialMatch);
+                        otherUserMatches.add(potentialMatch);
+                    }
                 }
                 i ++;
             }
@@ -125,10 +119,45 @@ public class Matcher {
     }
 
     /**
+     * Returns a map containing the list of all top matches for each user in
+     * {@code users}. Each possible pair of users is evaluated by a metric function.
+     */
+    private Map<String, List<Match>> getTopMatches(List<User> users, int numTopMatches) {
+        Map<String, List<Match>> topMatches = new HashMap<>();
+        Map<String, List<Match>> potentialMatches = matchPotential(users);
+        for (User user : users) {
+            List<Match> userTopMatches;
+            List<Match> userPotentialMatches = potentialMatches.get(user.getId());
+            userPotentialMatches.sort(new Comparator<Match>() {
+                @Override
+                public int compare(Match m1, Match m2) {
+                    double val = (m1.getMetric() - m2.getMetric());
+                    if (val > 0) {
+                        return -1;
+                    } else if (val == 0) {
+                        return 0;
+                    } else {
+                        return 1;
+                    }
+                }
+            });
+            if (userPotentialMatches.size() >= 4) {
+                userTopMatches = userPotentialMatches.subList(0, numTopMatches);
+            } else {
+                userTopMatches = userPotentialMatches;
+            }
+            topMatches.put(user.getId(), userTopMatches);
+            }
+        return topMatches;
+        }
+
+
+    /**
      * Returns the metric representing the closeness of match between two users.
      */
     public double metric(User user1, User user2) {
         // TODO: Improve metric to include more than just courses
+        double metric;
         Profile profile1 = user1.getProfile();
         Profile profile2 = user2.getProfile();
 
@@ -149,7 +178,7 @@ public class Matcher {
 
         HashSet<String> commonCourseCodes = new HashSet<>(courseCodes1);
         commonCourseCodes.retainAll(courseCodes2);  // takes the intersection
-        double metric = ((double) commonCourseCodes.size()) / Math.min(courses1.size(), courses2.size());
+        metric = ((double) commonCourseCodes.size()) / Math.min(courses1.size(), courses2.size());
 
         return metric;
     }
