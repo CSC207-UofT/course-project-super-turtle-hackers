@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserBuilder {
     
+    // TODO: assign ID to user
     private User user;
     private Profile profile;
     
@@ -57,8 +58,9 @@ public class UserBuilder {
 
     public User createUser() {
         user.setProfile(this.profile);
+        User u = this.user;
         reset();
-        return user; 
+        return u; 
     }
     
     /**
