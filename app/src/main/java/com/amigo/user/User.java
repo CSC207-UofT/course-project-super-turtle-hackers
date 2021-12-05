@@ -3,21 +3,27 @@ package com.amigo.user;
 import java.util.ArrayList;
 import java.util.List;
 // import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+// import javax.persistence.Entity;
+// import javax.persistence.Id;
 
 import com.amigo.match.Match;
+import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+
+import org.springframework.data.annotation.Id;
 
 /**
  * A user containing an id, a profile and a list of current matches.
  */
-@Entity
+@Container(containerName="Users")
 public class User {
     // TODO: Add a flag for report
     // TODO: Add a checkbox for Wildcard Matching
     private Profile profile;
-    @Id
+    // @Id
     // @Column(name = "id")
+    @Id
+    @PartitionKey
     private String id;
     private List<Match> currentMatches;
 //    private matchHistory matchHistory; not used for phase 0

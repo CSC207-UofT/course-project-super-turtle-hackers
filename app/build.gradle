@@ -35,7 +35,7 @@ repositories {
 }
 
 ext {
-  set('azureVersion', '3.10.0')
+  set('azureVersion', '3.11.0')
 }
 
 // run {

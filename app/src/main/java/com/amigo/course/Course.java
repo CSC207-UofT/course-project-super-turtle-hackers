@@ -1,18 +1,26 @@
 package com.amigo.course;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+// import javax.persistence.Entity;
+// import javax.persistence.GeneratedValue;
+// import javax.persistence.GenerationType;
+// import javax.persistence.Id;
+
+import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+
+import org.springframework.data.annotation.Id;
 
 /**
  * A course that the user is taking.
  */
-@Entity
+// @Entity
+@Container(containerName = "Course")
 public class Course {
+    // @Id
+    // @GeneratedValue(strategy=GenerationType.AUTO)
+    // private Integer id;
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
     private String courseCode;
+    @PartitionKey
     private String lecture;
     private String tutorial;
 
