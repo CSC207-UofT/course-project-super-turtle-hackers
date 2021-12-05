@@ -61,6 +61,9 @@ public class User {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**
      * Returns a user's email
