@@ -1,29 +1,30 @@
 package com.amigo.control;
 
-import javax.naming.Binding;
-import javax.servlet.http.HttpServletRequest;
-
+import com.amigo.course.Course;
+import com.amigo.course.CourseRepository;
 import com.amigo.form.CourseForm;
 import com.amigo.form.CourseFormList;
 import com.amigo.form.InterestForm;
 import com.amigo.form.RegistrationForm;
+import com.amigo.user.UserBuilder;
 import com.amigo.validate.CourseValidator;
 import com.amigo.validate.RegistrationValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Controller for account creation.
+ * <p>
+ * This controller is used throughout the user registration process (currently 3
+ * screens). Once registration is successful, a new {@code User} object is
+ * created and control is passed on to {@link DashboardController}.
  */
 @Controller
 public class RegistrationController {
@@ -36,8 +37,14 @@ public class RegistrationController {
 
     @Autowired
     CourseValidator courseValidator;
+
+    @Autowired
+    UserBuilder userBuilder;
+
+    @Autowired
+    CourseRepository courseRepository;
     
-    @GetMapping("/")
+    @GetMapping({"/", "/index"})
     public String showWelcomePage(Model model) {
         model.addAttribute("regForm", new RegistrationForm());
         return "index";
@@ -48,7 +55,7 @@ public class RegistrationController {
      * 
      * @param form a Data Access Object representing the registration form
      */
-    @PostMapping("/")
+    @PostMapping({"/", "/index"})
     public String validateRegistration(Model model, @ModelAttribute("regForm") RegistrationForm form, BindingResult result) {
         validator.validate(form, result);
         
@@ -56,6 +63,7 @@ public class RegistrationController {
             model.addAttribute("errorMessage", result.getAllErrors().get(0).getCode());
             return "index";
         }
+        userBuilder.populate(form);
         return "redirect:/register-courses";
     }
 
@@ -76,7 +84,13 @@ public class RegistrationController {
             model.addAttribute("courseForms", new CourseFormList());
             return "register-courses";
         }
+        else {
+            for (CourseForm form : courseForms.getCourseList()) {
+                courseRepository.save(new Course(form.getCourseCode(), form.getLectureCode(), form.getTutorialCode()));
+            }
+        }
 
+        userBuilder.populate(courseForms);
         return "redirect:/register-interests";
     }
 
@@ -87,8 +101,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/register-interests")
-    public String validateInterests(Model model, @ModelAttribute("interestForm") InterestForm interestForm) {
-        System.out.println(interestForm.getHobbies());
+    public String validateInterests(RedirectAttributes attributes, @ModelAttribute("interestForm") InterestForm interestForm) {
+        userBuilder.populate(interestForm);
+        attributes.addFlashAttribute("user", userBuilder.createUser());
         return "redirect:/dashboard";
     }
 }

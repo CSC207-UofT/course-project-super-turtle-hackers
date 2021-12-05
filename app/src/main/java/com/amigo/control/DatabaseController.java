@@ -37,6 +37,13 @@ public class DatabaseController {
         return "Saved";
     }
 
+    @GetMapping("/testaddcourse")
+    public @ResponseBody String testAddCourse() {
+        Course course = new Course("CSC101", "LEC0101", "TUT0101");
+        courseRepository.save(course);
+        return "Saved";
+    }
+
     /**
      * Returns all the courses saved in the database
      */

@@ -28,7 +28,9 @@ public class User {
     /**
      * Creates a user using the default constructor
      */
-    public User() {}
+    public User() {
+        this.currentMatches = new ArrayList<>();
+    }
 
     /**
      * Creates a user containing an id, an email, a password, a profile and an empty list of current matches.
@@ -48,6 +50,10 @@ public class User {
         return profile;
     }
 
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
     /**
      * Returns a user's id
      */
@@ -55,12 +61,19 @@ public class User {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**
      * Returns a user's email
      */
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -105,5 +118,17 @@ public class User {
             namesCurrentMatches.add(otherUser);
         }
         return namesCurrentMatches.toString();
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Returns whether the user object has been properly instantiated and has its
+     * attributes set.
+     */
+    public boolean isValid() {
+        return profile != null;
     }
 }

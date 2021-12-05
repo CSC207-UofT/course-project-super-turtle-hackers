@@ -2,6 +2,7 @@ package com.amigo.user;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import com.amigo.course.Course;
@@ -24,7 +25,9 @@ public class Profile {
     /**
      * Creates a profile using the default constructor
      */
-    public Profile() {}
+    public Profile() {
+        this.courses = new HashSet<>();
+    }
     
     /**
      * Creates a profile containing a name, year of study, program of study, courses, contact info and interests.
@@ -97,9 +100,13 @@ public class Profile {
     public ArrayList<String> getCoursesList() {
         ArrayList<String> coursesStringList = new ArrayList<>();
         for (Course course : courses) {
-            coursesStringList.add(course.toString());
+            coursesStringList.add(course.getCourseCode());
         }
         return coursesStringList;
+    }
+
+    public String getCoursesAsString() {
+        return getCoursesList().stream().collect(Collectors.joining(" "));
     }
 
     /**
