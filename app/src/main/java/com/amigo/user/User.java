@@ -115,6 +115,7 @@ public class User {
         return namesCurrentMatches.toString();
     }
 
-    public void setPassword(String password2) {
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
