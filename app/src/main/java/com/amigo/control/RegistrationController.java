@@ -15,9 +15,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Controller for account creation.
+ * <p>
+ * This controller is used throughout the user registration process (currently 3
+ * screens). Once registration is successful, a new {@code User} object is
+ * created and control is passed on to {@link DashboardController}.
  */
 @Controller
 public class RegistrationController {
@@ -54,7 +59,7 @@ public class RegistrationController {
             return "index";
         }
         userBuilder.populate(form);
-        return "redirect:/register-courses";
+        return "redirect:/register-interests";
     }
 
     @GetMapping("/register-courses")
@@ -86,9 +91,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/register-interests")
-    public String validateInterests(Model model, @ModelAttribute("interestForm") InterestForm interestForm) {
+    public String validateInterests(RedirectAttributes attributes, @ModelAttribute("interestForm") InterestForm interestForm) {
         userBuilder.populate(interestForm);
-        model.addAttribute("user", userBuilder.createUser());
+        attributes.addFlashAttribute("user", userBuilder.createUser());
         return "redirect:/dashboard";
     }
 }
