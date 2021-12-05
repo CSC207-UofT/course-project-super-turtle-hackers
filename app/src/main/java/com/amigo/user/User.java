@@ -28,7 +28,9 @@ public class User {
     /**
      * Creates a user using the default constructor
      */
-    public User() {}
+    public User() {
+        this.currentMatches = new ArrayList<>();
+    }
 
     /**
      * Creates a user containing an id, an email, a password, a profile and an empty list of current matches.
