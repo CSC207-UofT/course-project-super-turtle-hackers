@@ -48,6 +48,10 @@ public class User {
         return profile;
     }
 
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
     /**
      * Returns a user's id
      */
@@ -61,6 +65,10 @@ public class User {
      */
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -105,5 +113,8 @@ public class User {
             namesCurrentMatches.add(otherUser);
         }
         return namesCurrentMatches.toString();
+    }
+
+    public void setPassword(String password2) {
     }
 }

@@ -24,7 +24,9 @@ public class Profile {
     /**
      * Creates a profile using the default constructor
      */
-    public Profile() {}
+    public Profile() {
+        this.courses = new HashSet<>();
+    }
     
     /**
      * Creates a profile containing a name, year of study, program of study, courses, contact info and interests.
