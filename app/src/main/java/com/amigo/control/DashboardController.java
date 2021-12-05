@@ -17,8 +17,13 @@ public class DashboardController {
 
     @GetMapping("/dashboard")
     public ModelAndView showDashboard(@ModelAttribute User user) {
+        if (!user.isValid() && !presenter.hasUser()) {
+            return new ModelAndView("404");
+        }
+        if (user != null) {
+            presenter.setUser(user);
+        }
         ModelAndView mav = new ModelAndView("dashboard");
-        presenter.setUser(user);
         presenter.populate(mav.getModel());
         return mav;
     }
