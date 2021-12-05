@@ -21,6 +21,7 @@ public class Matcher {
      *       then pick the user with the highest rank and match it with the original user
      * </pre>
      */
+
     public Map<String, List<Match>> match(List<User> users) {
         // Creates a map of potential matches
         Map<String, List<Match>> potentialMatches = this.matchPotential(users);
@@ -88,6 +89,7 @@ public class Matcher {
      * Returns a map containing the list of all potential matches for each user in
      * {@code users}. Each possible pair of users is evaluated by a metric function.
      */
+
     private Map<String, List<Match>> matchPotential(List<User> users) {
         // TODO: Add Wildcard Matches
         int numUsers = users.size();
@@ -122,6 +124,7 @@ public class Matcher {
      * +1 for same program of study
      * -1 for year of study difference > 1
      */
+
     public double metric(User user1, User user2) {
         // TODO: Improve metric to include more than just courses, should be done
         double temp_metric = 0;
@@ -177,9 +180,11 @@ public class Matcher {
 
         return metric;
     }
+
     /**
      * Returns whether the two inputs differ by one letter
      */
+
     static boolean differ_by_one(String word1, String word2) {
         if(word1.length() == word2.length()) {
             int mistake = (int) Math.ceil((double)word1.length()/5); // Allow only 20% error in typing
@@ -216,6 +221,7 @@ public class Matcher {
     /**
      * Returns whether there are two equivalent spellings for programs of study
      */
+
     static boolean alternative_spelling(String word1, String word2) {
         if ((word1.equals("cs")||differ_by_one(word1, "cs")) && (word2.equals("computer science")||differ_by_one(word2, "computer science"))){
             return true;

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 /**
  * A course that the user is taking.
  */
+
 @Entity
 public class Course {
     @Id
@@ -19,11 +20,13 @@ public class Course {
     /**
      * Creates a course using the default constructor
      */
+
     public Course() {}
 
     /**
      * Creates a course with only the courseCode
      */
+
     public Course(String courseCode) {
         this(courseCode, "", "");
     }
@@ -37,6 +40,7 @@ public class Course {
     /**
      * Returns the course code
      */
+
     public String getCourseCode() {
         return courseCode;
     }
@@ -51,6 +55,7 @@ public class Course {
     /**
      * Returns the tutorial section
      */
+
     public String getTutorial() {
         return tutorial;
     }
@@ -58,6 +63,7 @@ public class Course {
     /**
      * Returns a String representation of the course readable by MySQL.
      */
+
     public String toString() {
         return "Course{" + courseCode + ", "
                 + lecture + ", "
