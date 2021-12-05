@@ -22,4 +22,15 @@ public class CourseSetFactory {
         }
         return courseSet;
     }
+
+    public boolean equals (HashSet<Course> CourseSet1, HashSet<Course> CourseSet2 ){
+        for (Course c : CourseSet1) {
+            for (Course d : CourseSet2) {
+                if (d != c){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

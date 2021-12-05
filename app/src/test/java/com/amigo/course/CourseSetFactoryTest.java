@@ -28,7 +28,7 @@ public class CourseSetFactoryTest {
 
         assertEquals(3, courseSet1.size());
         assertEquals(1, courseSet2.size());
-        assertEquals(courseSet1, courseSet3);
+        assertTrue(courseSet1.equals(courseSet3));
         assertFalse(courseSet4.isEmpty());
         assertTrue(courseSet1.contains(course1));
         assertFalse(courseSet1.contains(course2));
