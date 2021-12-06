@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 /**
  * Controller for database
  */
+
 @Controller
 @RequestMapping(path="/data")
 public class DatabaseController {
@@ -47,6 +49,7 @@ public class DatabaseController {
     /**
      * Returns all the courses saved in the database
      */
+
     @GetMapping(path="/allcourses")
     public @ResponseBody List<Course> getAllCourses() {
         return courseRepository.findAll();

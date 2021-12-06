@@ -14,9 +14,9 @@ import com.amigo.course.Course;
 public class Profile {
     private String name;
     private int yearOfStudy;
-    private String programOfStudy;
+    private String programOfStudy = "";
     private HashSet<Course> courses;
-    private String contactInfo;
+    private String contactInfo = "";
     private String recInterest;
     private String musInterest;
     private String sportInterest;
