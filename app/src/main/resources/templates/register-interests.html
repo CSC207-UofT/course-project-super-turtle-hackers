@@ -35,47 +35,40 @@
       </div>
     </div>
     <div class="column-4 w-col w-col-6">
-      <div class="login-div-block"><img src="images/Step2.png" loading="lazy" width="344"
+      <div class="login-div-block"><img src="images/Step3.png" loading="lazy" width="344"
           sizes="(max-width: 479px) 72vw, (max-width: 767px) 344px, (max-width: 991px) 38vw, 344px"
-          srcset="images/Step2-p-500.png 500w, images/Step2-p-800.png 800w, images/Step2-p-1080.png 1080w, images/Step2.png 1440w"
+          srcset="images/Step3-p-500.png 500w, images/Step3-p-800.png 800w, images/Step3-p-1080.png 1080w, images/Step3.png 1440w"
           alt="" class="image-3">
-        <a href="/" class="w-inline-block"><img src="images/arrow-left.png" loading="lazy" width="52" alt=""
-            class="image-5"></a>
+        <a href="/register-courses" class="w-inline-block"><img
+            src="images/arrow-left.png" loading="lazy" width="52" alt="" class="image-5"></a>
         <div class="w-form">
-          <form id="email-form" name="email-form" th:action="@{/register-courses}" method="post" th:object="${courseForms}">
-            <label for="name" class="field-label-4">Enter your current course details</label>
-            <!-- iteration feature of Thymeleaf, double underscore for preprocessing -->
-            <div th:each="courseForm, iterStat : *{courseList}">
-              <div class="text-block-2">Course code</div>
-              <input type="text" maxlength="256" class="text-field-2-copy w-input" 
-                placeholder="CSC207" required=""
-                th:field="*{courseList[__${iterStat.index}__].courseCode}"
-              >
-              <div class="text-block-2-copy">
-                Tutorial Section                                    Lecture Section                      </div>
-              <input
-                type="text" class="text-field-2-copy w-input" maxlength="256"
-                placeholder="TUT0101"
-                th:field="*{courseList[__${iterStat.index}__].tutorialCode}"
-              >
-              <input type="text"
-                class="text-field-2-copy w-input" maxlength="256"
-                placeholder="LEC0101" required=""
-                th:field="*{courseList[__${iterStat.index}__].lectureCode}"
-              >
-            </div>
-            <div class="text-block-5">Is an Amigo taking the same class as you?<br>Ask them for their amigo id and get
-              matched!</div>
-            <input type="text" class="text-field-3 w-input" maxlength="256" name="Have-an-Amigo-ID"
-              data-name="Have an Amigo ID" placeholder="Have an Amigo ID?" id="Have-an-Amigo-ID">
-            <input type="submit"
-              value="Continue      &gt;  " data-wait="Please wait..." class="submit-button-4 w-button">
+          <form id="email-form" name="email-form" class="form"
+            th:action="@{/register-interests}" method="post" th:object="${interestForm}">
+            <label for="name"
+              class="field-label-4">Enter your interests</label>
+            <input type="text"
+              class="text-field w-input" maxlength="256" name="name" placeholder="Music Interests"
+              id="name" required="" th:field="*{music}">
+            <input type="text" class="text-field w-input" maxlength="256" name="First-Name"
+              placeholder="Sports Interests" id="First-Name" required=""
+              th:field="*{sports}">
+            <input type="text"
+              class="text-field w-input" maxlength="256" name="Last-Name"
+              placeholder="Recreational Interests" id="Last-Name" required=""
+              th:field="*{recreational}">
+            <input type="text"
+              class="text-field w-input" maxlength="256" name="Password" placeholder="Hobbies"
+              id="Password" required=""
+              th:field="*{hobbies}">
+            <input type="submit" value="Create Account" data-wait="Please wait..."
+              class="submit-button-2-copy w-button">
           </form>
           <div class="w-form-done">
             <div>Thank you! Your submission has been received!</div>
           </div>
-          <div th:if="${not #strings.isEmpty(errorMessage)}" th:text="${errorMessage}"
-            class="form-error">Oops! Something went wrong while submitting the form.</div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
         </div>
       </div>
     </div>

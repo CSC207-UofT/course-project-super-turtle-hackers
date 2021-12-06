@@ -35,27 +35,32 @@ public class MatcherTest {
         HashSet<Course> profile7courses = new HashSet<>(Collections.singletonList(course7));
 
         Profile profile1 = new Profile("Dien", 2, "Computer Science",
-                profile1courses, "dien@mail.utoronto.ca");
+                profile1courses, "dien@mail.utoronto.ca", "Art", "Volleyball",
+                "Justin Bieber", "Sleep");
         Profile profile2 = new Profile("Akshat", 2, "Computer Science",
-                profile2courses, "akshat@mail.utoronto.ca");
+                profile2courses, "akshat@mail.utoronto.ca", "Hackathons", "Rock Climbing", "Greenday", "Jazz");
         Profile profile3 = new Profile("Tony", 1, "Women and Gender Studies",
-                profile3courses, "iloveponies@gmail.com");
+                profile3courses, "iloveponies@gmail.com", "", "Skating", "", "");
         Profile profile4 = new Profile("Sriracha", 3, "Pathobiology",
-                profile4courses, "hotsauceisthesauce@yahoo.co.in");
+                profile4courses, "hotsauceisthesauce@yahoo.co.in", "", "", "", "");
         Profile profile5 = new Profile("Larry", 4, "Mathematics",
-                profile5courses, "l.tsai@mail.utoronto.ca");
+                profile5courses, "l.tsai@mail.utoronto.ca", "", "", "", "");
         Profile profile6 = new Profile("Joe", 3, "Math",
-                profile6courses, "joe@mail.utoronto.ca");
+                profile6courses, "joe@mail.utoronto.ca", "", "", "", "");
         Profile profile7 = new Profile("Bob", 2, "Mathe",
-                profile7courses, "bob@mail.utoronto.ca");
+                profile7courses, "bob@mail.utoronto.ca", "", "", "", "");
 
-        User user1 = new User(profile1, "dien001");
-        User user2 = new User(profile2, "aksh002");
-        User user3 = new User(profile3, "tony003");
-        User user4 = new User(profile4, "srir004");
-        User user5 = new User(profile5, "larr005");
-        User user6 = new User(profile6, "joee006");
-        User user7 = new User(profile7, "bobb007");
+        User user1 = new User(profile1, "dien001", "", "");
+        User user2 = new User(profile2, "aksh002", "", "");
+        User user3 = new User(profile3, "tony003", "", "");
+        User user4 = new User(profile4, "srir004", "", "");
+        User user5 = new User(profile5, "larr005", "", "");
+        User user6 = new User(profile6, "joee006", "", "");
+        User user7 = new User(profile7, "bobb007", "", "");
+        // User user1 = new User(profile1, "dien001", "dien@mail.utoronto.ca", "csislove");
+        // User user2 = new User(profile2, "aksh002", "akshat@mail.utoronto.ca", "compsciisgreat");
+        // User user3 = new User(profile3, "tony003", "iloveponies@gmail.com", "iloveponies");
+        // User user4 = new User(profile4, "srir004", "hotsauceisthesauce@yahoo.co.in", "hotsaucelove");
 
         ArrayList<User> listOfUsers = new ArrayList<>(Arrays.asList(user1, user2, user3, user4, user5, user6, user7));
 

@@ -1,6 +1,6 @@
 package com.amigo.control;
 
-import com.amigo.form.Credentials;
+import com.amigo.form.LoginForm;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String showLoginPage(Model model) {
-        model.addAttribute("credentials", new Credentials());
+        model.addAttribute("credentials", new LoginForm());
         return "log-in";
     }
 
@@ -30,7 +30,7 @@ public class LoginController {
      */
 
     @PostMapping("/login-success")
-    public String getCredentials(Model model, @ModelAttribute("credentials") Credentials cred) {
+    public String getCredentials(Model model, @ModelAttribute("credentials") LoginForm cred) {
         model.addAttribute("name", cred.getUsername());
         return "log-in-success";
     }

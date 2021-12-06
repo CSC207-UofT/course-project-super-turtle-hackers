@@ -5,7 +5,7 @@ import com.amigo.course.Course;
 
 import java.util.HashSet;
 
-public class ProfileFactory{
+public class ProfileFactory {
 
     /**
      * Constructor for ProfileFactory
@@ -22,7 +22,9 @@ public class ProfileFactory{
      * @param contactInfo the contact information of the user
      * @return a new Profile object that stores all the information
      */
-    public Profile createProfile(String name, int yearOfStudy, String programOfStudy, HashSet<Course> courses, String contactInfo) {
-        return new Profile(name, yearOfStudy, programOfStudy, courses, contactInfo);
+    public Profile createProfile(String name, int yearOfStudy, String programOfStudy, HashSet<Course> courses,
+                                 String contactInfo, String hobbies, String sportInterest, String musInterest, String recInterest) {
+        return new Profile(name, yearOfStudy, programOfStudy, courses, contactInfo, hobbies,
+                sportInterest, musInterest, recInterest);
     }
 }

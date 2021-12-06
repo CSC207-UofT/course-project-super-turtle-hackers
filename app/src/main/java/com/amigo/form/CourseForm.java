@@ -17,7 +17,6 @@ public class CourseForm {
      * Creates a course code
      */
     public void setCourseCode(String courseCode) {
-        System.out.println(courseCode);
         this.courseCode = courseCode;
     }
     /**
