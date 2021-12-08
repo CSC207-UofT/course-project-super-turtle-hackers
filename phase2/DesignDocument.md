@@ -55,7 +55,9 @@ Thus far, our group has diligently worked on implementing phase 1 of this projec
 etc.
 I will continue working on Spring for project phase 2 and hopefully address some of the leftover problems from this phase. Also, like I have done always, I will continue to help my teammates solve problems.
 	
-* **Lawrence:** I worked on frontend with Adrian in the development of the webapp. I created the UML for the project using graphic design. I also worked on this design document and wrote some test cases for the back end development. I assisted others with issues that had arisen as well. Overall, I believe that the group is working well together and we have a solid plan ahead of us. 
+* **Lawrence:** 
+I finished the matching algorithm so that it would account for the user’s program of study and year of study. I created an optimised mathematical model that allows for users to be optimally matched with other users. I also created several methods that allow for 1000s of misspelt inputs and still be able to use the app. I also made test cases for matcher as well as for other classes such as user, coureset factory, and user manager. I added docstrings and fixed bugs to multiple classes. I also worked on this design document’s specifications and scenario walkthrough. 
+
 
 
 ### Open questions your group is struggling with
