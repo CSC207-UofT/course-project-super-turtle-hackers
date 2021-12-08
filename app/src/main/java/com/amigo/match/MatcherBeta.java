@@ -91,7 +91,6 @@ public class MatcherBeta {
      */
 
     private Map<String, List<Match>> matchPotential(List<User> users) {
-        // TODO: Add Wildcard Matches
         int numUsers = users.size();
 
         // Creates a map of potential matches
@@ -204,6 +203,7 @@ public class MatcherBeta {
         }
         return true;
     }
+
     // Check if the words are alternates of each other if the additional letter is removed, at every index
     private static boolean check_added_character(String word1, String word2) {
         if(word2.length() - word1.length() == 1){

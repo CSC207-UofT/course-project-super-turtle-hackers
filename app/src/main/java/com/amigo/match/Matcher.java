@@ -91,7 +91,6 @@ public class Matcher {
      * {@code users}. Each possible pair of users is evaluated by a metric function.
      */
     private Map<String, List<Match>> matchPotential(List<User> users) {
-        // TODO: Add Wildcard Matches
         int numUsers = users.size();
 
         // Creates a map of potential matches

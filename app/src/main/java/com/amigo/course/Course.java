@@ -30,6 +30,9 @@ public class Course {
     public Course(String courseCode) {
         this(courseCode, "", "");
     }
+    /**
+     * Creates a course with courseCode, lecture section, and tutorial section
+     */
 
     public Course(String courseCode, String lecture, String tutorial) {
         this.courseCode = courseCode;

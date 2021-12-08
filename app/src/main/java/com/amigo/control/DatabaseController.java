@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(path="/data")
 public class DatabaseController {
     // @Autowired
-    // private UserRepository userRepository;
+
 
     @Autowired
     private CourseRepository courseRepository;
 
-    // /**
+    /**
     //  * Returns "saved" if a course is added (saved) to the database
     //  */
 
@@ -38,7 +38,9 @@ public class DatabaseController {
         courseRepository.save(course);
         return "Saved";
     }
-
+    /**
+     //  * Returns "saved" if a course is added (saved) to the database
+     //  */
     @GetMapping("/testaddcourse")
     public @ResponseBody String testAddCourse() {
         Course course = new Course("CSC101", "LEC0101", "TUT0101");

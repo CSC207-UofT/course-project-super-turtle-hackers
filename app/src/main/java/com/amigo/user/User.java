@@ -2,7 +2,6 @@ package com.amigo.user;
 
 import java.util.ArrayList;
 import java.util.List;
-// import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,8 +12,6 @@ import com.amigo.match.Match;
  */
 @Entity
 public class User {
-    // TODO: Add a flag for report-made binary int-created
-    // TODO: Add a checkbox for Wildcard Matching-created
     private Profile profile;
     @Id
     // @Column(name = "id")
@@ -130,7 +127,9 @@ public class User {
         }
         return namesCurrentMatches.toString();
     }
-
+    /**
+     * Creates a password
+     */
     public void setPassword(String password) {
         this.password = password;
     }

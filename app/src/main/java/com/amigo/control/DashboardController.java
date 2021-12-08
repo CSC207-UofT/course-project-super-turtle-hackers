@@ -13,12 +13,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controller for dashboard
+ */
+
 @Controller
 public class DashboardController {
 
     @Autowired
     UserPresenter presenter;
-
+    /**
+     *
+     * Shows the dashboard
+     *
+     */
     @GetMapping("/dashboard")
     public ModelAndView showDashboard(@ModelAttribute User user) {
         if (!user.isValid() && !presenter.hasUser()) {
@@ -31,7 +39,11 @@ public class DashboardController {
         presenter.populate(mav.getModel());
         return mav;
     }
-
+    /**
+     *
+     * Shows the "Matching" screen
+     *
+     */
     @GetMapping("/matching-screen")
     public ModelAndView showMatchingScreen() {
         ModelAndView mav = new ModelAndView("matching-screen");
@@ -54,7 +66,11 @@ public class DashboardController {
         }
         return mav;
     }
-
+    /**
+     *
+     * Shows the "Error" page
+     *
+     */
     @GetMapping("/*") 
     public String showError() {
         return "error-page";

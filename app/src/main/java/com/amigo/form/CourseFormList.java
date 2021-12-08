@@ -15,11 +15,15 @@ public class CourseFormList {
         courseList.add(new CourseForm());
         courseList.add(new CourseForm());
     }
-
+    /**
+     * Returns the courselist
+     */
     public List<CourseForm> getCourseList() {
         return courseList;
     }
-    
+    /**
+     * Creates a courselist
+     */
     public void setCourseList(List<CourseForm> courseList) {
         this.courseList = courseList;
     }

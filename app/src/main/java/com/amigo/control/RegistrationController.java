@@ -28,7 +28,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 public class RegistrationController {
-
     /**
      * Validator that validates registration form.
      */
@@ -43,7 +42,11 @@ public class RegistrationController {
 
     @Autowired
     CourseRepository courseRepository;
-    
+    /**
+     *
+     * Shows the "Welcome" page
+     *
+     */
     @GetMapping({"/", "/index"})
     public String showWelcomePage(Model model) {
         model.addAttribute("regForm", new RegistrationForm());
@@ -66,13 +69,21 @@ public class RegistrationController {
         userBuilder.populate(form);
         return "redirect:/register-courses";
     }
-
+    /**
+     *
+     * Shows the "Register Course" page
+     *
+     */
     @GetMapping("/register-courses")
     public String showRegisterCoursePage(Model model) {
         model.addAttribute("courseForms", new CourseFormList());
         return "register-courses";
     }
-
+    /**
+     *
+     * Validate the courses
+     *
+     */
     @PostMapping("/register-courses")
     public String validateCourses(Model model, @ModelAttribute CourseFormList courseForms, BindingResult result) {
         for (CourseForm form : courseForms.getCourseList()) {
@@ -93,13 +104,21 @@ public class RegistrationController {
         userBuilder.populate(courseForms);
         return "redirect:/register-interests";
     }
-
+    /**
+     *
+     * Shows the "Register Interest" page
+     *
+     */
     @GetMapping("/register-interests")
     public String showRegisterInterestPage(Model model) {
         model.addAttribute("interestForm", new InterestForm());
         return "register-interests";
     }
-
+    /**
+     *
+     * Validate the interests
+     *
+     */
     @PostMapping("/register-interests")
     public String validateInterests(RedirectAttributes attributes, @ModelAttribute("interestForm") InterestForm interestForm) {
         userBuilder.populate(interestForm);

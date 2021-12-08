@@ -10,14 +10,18 @@ import com.amigo.user.User;
 import com.amigo.user.UserFactory;
 
 public class DemoMatching {
-
+    /**
+     * Performs the matching algorthm and returns the matches
+     */
     public static Map<String, List<Match>> doMatching(User user) {
         Matcher matcher = new Matcher();
         List<User> users = createDemoUsers();
         users.add(user);
         return matcher.match(users);
     }
-
+    /**
+     * Creates the demo users
+     */
     private static List<User> createDemoUsers() {
         ArrayList<User> users = new ArrayList<User>();
         ProfileFactory profileFactory = new ProfileFactory();

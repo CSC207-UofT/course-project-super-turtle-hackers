@@ -13,8 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserBuilder {
-    
-    // TODO: assign ID to user
+
     private User user;
     private Profile profile;
     
@@ -39,7 +38,9 @@ public class UserBuilder {
             populateCourse(each);
         }
     }
-    
+    /**
+     * Populates the {@code Profile} object with attributes from the course form.
+     */
     private void populateCourse(CourseForm form) {
         Course c = new Course(form.getCourseCode(), form.getLectureCode(), form.getTutorialCode());
         profile.addCourses(c);
@@ -54,8 +55,10 @@ public class UserBuilder {
         profile.setMusInterest(form.getMusic());
         profile.setSportInterest(form.getSports());
     }
-    
 
+    /**
+     * Creates a user
+     */
     public User createUser() {
         user.setProfile(this.profile);
         String id = this.profile.getName().split(" ")[0].toLowerCase() + (int) (1000 * Math.random() + 1);

@@ -1,9 +1,7 @@
 package com.amigo.present;
 
 import java.util.Map;
-
 import com.amigo.user.User;
-
 import org.springframework.stereotype.Controller;
 
 /**
@@ -27,15 +25,27 @@ public class UserPresenter {
     public boolean hasUser() {
         return user != null;
     }
-    
+    /**
+     * Returns the user
+     */
     public User getUser() {
         return user;
     }
-    
+    /**
+     * Creates a user
+     */
     public void setUser(User user) {
         this.user = user;
     }
-
+    /**
+     * Returns the suffix
+     */
+    public String getSuffix() {
+        return suffix;
+    }
+    /**
+     * Creates a suffix
+     */
     public void setSuffix(String suffix) {
         this.suffix = suffix;
     }

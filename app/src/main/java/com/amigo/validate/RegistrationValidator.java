@@ -23,7 +23,9 @@ public class RegistrationValidator implements Validator {
     public boolean supports(Class<?> clazz) {
         return RegistrationForm.class.equals(clazz);
     }
-
+    /**
+     * Validates the registration form
+     */
     @Override
     public void validate(Object target, Errors errors) {
         RegistrationForm form = (RegistrationForm) target;
