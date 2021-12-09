@@ -155,7 +155,6 @@ public class Matcher {
      * Returns the metric representing the closeness of match between two users.
      */
     public double metric(User user1, User user2) {
-        // TODO: Improve metric to include more than just courses
         double metric;
         Profile profile1 = user1.getProfile();
         Profile profile2 = user2.getProfile();

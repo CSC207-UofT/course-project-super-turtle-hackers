@@ -1,11 +1,9 @@
 package com.amigo.control;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.amigo.course.Course;
 import com.amigo.course.CourseRepository;
-// // import com.amigo.user.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
