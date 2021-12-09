@@ -36,7 +36,6 @@ public class CourseValidator implements Validator {
      */
     @Override
     public void validate(Object target, Errors errors) {
-        // TODO: convert into nested validators to correctly identify fields
         CourseForm form = (CourseForm) target;
         if (!COURSE_PATTERN.matcher(form.getCourseCode()).matches()) {
             errors.reject(errorStrings.COURSE_INFO_FORMAT);

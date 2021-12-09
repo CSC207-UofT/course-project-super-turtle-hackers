@@ -5,13 +5,6 @@ import java.util.HashSet;
 public class CourseSetFactory {
 
     /**
-     * Constructor for CourseSetFactory
-     */
-
-    public CourseSetFactory() {
-    }
-
-    /**
      * Creates a course set using a string of course codes
      * @param stringOfCourseCodes a string containing course codes, each separated by commas
      * @return a new HashSet containing a user's courses

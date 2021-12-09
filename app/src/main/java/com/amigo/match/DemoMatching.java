@@ -23,7 +23,7 @@ public class DemoMatching {
      * Creates the demo users
      */
     private static List<User> createDemoUsers() {
-        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<>();
         ProfileFactory profileFactory = new ProfileFactory();
         CourseSetFactory courseSetFactory = new CourseSetFactory();
         UserFactory userFactory = new UserFactory();
