@@ -2,19 +2,14 @@ package com.amigo.user;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 import com.amigo.match.Match;
 
 /**
  * A user containing an id, an email, a password, a profile and a list of current matches.
  */
-@Entity
 public class User {
     private Profile profile;
-    @Id
-    // @Column(name = "id")
     private String id;
     private String email;
     private String password;
@@ -22,7 +17,6 @@ public class User {
     private List<Match> currentMatches;
     private int flag;
     private boolean checkbox;
-//    private matchHistory matchHistory; not used for phase 0
 
     /**
      * Creates a user using the default constructor

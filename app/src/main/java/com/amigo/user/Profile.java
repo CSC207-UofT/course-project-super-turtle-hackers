@@ -3,14 +3,12 @@ package com.amigo.user;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
-
-import javax.persistence.Entity;
 import com.amigo.course.Course;
 
 /**
  * A profile containing a name, year of study, program of study, courses, contact info and interests.
  */
-@Entity
+
 public class Profile {
     private String name;
     private int yearOfStudy;
