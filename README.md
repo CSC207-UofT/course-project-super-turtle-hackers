@@ -2,7 +2,7 @@
 
 The CSC207 Course project created by the Super Turtle Hackers.
 
-To find the updated Design Document, navigate to the folder 'phase2' and click on the required file. 
+To find the updated Design Document and the Accessibility report, navigate to the folder 'phase2' and click on the required file. 
 
 To find the UML file navigate to the folder 'phase1' and click on the required file. 
 
