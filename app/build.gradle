@@ -9,9 +9,9 @@ plugins {
 }
 
 azurewebapp {
-    subscription = 'a0e84d5d-dc20-4848-9dfc-b73494e15e23'
+    subscription = '4c75d5b5-38ff-486a-82cd-ce84d271e2e4'
     resourceGroup = 'azure-turtle'
-    appName = 'Amigos'
+    appName = 'AmigoApp'
     pricingTier = 'F1' // 'PremiumV2-P1v2'
     region = 'eastus'
     runtime {

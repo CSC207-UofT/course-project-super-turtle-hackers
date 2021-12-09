@@ -12,6 +12,7 @@ This program has only been tested with JDK 11 (recommended) and 13. It is not gu
 
 ## Run Instructions:
 
-Simply go to amigo.azurewebsites.net to run the webapp. 
+Simply go to [amigoapp.azurewebsites.net](https://amigoapp.azurewebsites.net/) (previously it was amigos.azurewebsites.net) to run the webapp. 
+Please note that it may take time for the website to first load, because it is on a Free Plan of Azure.
 
 You will be unable to run the app locally because the app even if run locally requires the personal credentials of Azure to access the online database.
