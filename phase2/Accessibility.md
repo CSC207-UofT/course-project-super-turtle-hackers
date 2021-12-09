@@ -13,6 +13,7 @@ As none of the inputs or website usage are time-constrained, this principle does
 - When the user goes through the website, there is a clear flow of information and the user can easily understand it.
 - The website is consistent with user expectations and intuition.
 - All the text and labels use simple vocabulary.
+- We used natural mapping (a UX design concept) so that the user can immediately recognize where the buttons are located.
 - In the future, we plan to implement error messages for wrong inputs.
 #### Principle 4: Perceptible Information
 - We provide adequate contrast between essential information and its surroundings by using a light background and dark text.
@@ -27,7 +28,7 @@ As none of the inputs or website usage are time-constrained, this principle does
 
 #### Principle 7: Size and Space for Approach and Use
 - Everything is in line of sight and easily organized.
-- All text can be read within reading distance of the screen.
+- All text is large enough and can be read within reading distance of the screen.
 - The website is compatible with screen readers.
 - In the future, we will make it work with audio input devices.
 
